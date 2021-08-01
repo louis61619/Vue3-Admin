@@ -4,7 +4,9 @@ import router from '@/router'
 import store from '@/store'
 
 import { globalRegister } from '@/global'
-import './service/axios_demo'
+
+import 'normalize.css'
+import './assets/css/index.less'
 
 // 全局引入
 // import ElementPlus from 'element-plus'
@@ -18,5 +20,3 @@ app.use(store)
 app.use(globalRegister)
 // app.use(ElementPlus)
 app.mount('#app')
-
-console.log(process.env.VUE_APP_API)
