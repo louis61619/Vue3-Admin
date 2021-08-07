@@ -1,13 +1,13 @@
 <template>
   <div class="login-panel">
-    <el-tabs type="border-card" stretch>
-      <el-tab-pane>
+    <el-tabs type="border-card" v-model="currentTab" stretch>
+      <el-tab-pane name="account">
         <template #label>
           <span><i class="el-icon-user-solid"></i>帳號登錄</span>
         </template>
         <LoginAccount ref="accountRef" />
       </el-tab-pane>
-      <el-tab-pane>
+      <el-tab-pane name="phone">
         <template #label>
           <span><i class="el-icon-mobile-phone"></i>手機登錄</span>
         </template>
@@ -15,7 +15,9 @@
       </el-tab-pane>
     </el-tabs>
     <div class="account-control">
-      <el-checkbox v-model="isKeepPassword">記住密碼</el-checkbox>
+      <el-checkbox v-model="isKeepPassword" @change="keepChange"
+        >記住密碼</el-checkbox
+      >
       <el-link type="primary">忘記密碼</el-link>
     </div>
 
@@ -29,6 +31,7 @@
 import { defineComponent, ref } from 'vue'
 import LoginAccount from './login-account.vue'
 import LoginPhone from './login-phone.vue'
+import localCache from '@/utils/cache'
 
 export default defineComponent({
   components: {
@@ -36,19 +39,31 @@ export default defineComponent({
     LoginPhone
   },
   setup() {
-    const isKeepPassword = ref(false)
+    const isKeepPassword = ref(!!localCache.getCache('name') ?? false)
 
     // 獲取組件類型
     const accountRef = ref<InstanceType<typeof LoginAccount>>()
+    const currentTab = ref('account')
 
     const handleLoginClick = () => {
-      accountRef.value?.loginAction()
+      if (currentTab.value === 'account') {
+        accountRef.value?.loginAction(isKeepPassword.value)
+      }
+    }
+
+    const keepChange = (value: boolean) => {
+      if (!value) {
+        localCache.deleteCache('name')
+        localCache.deleteCache('password')
+      }
     }
 
     return {
       isKeepPassword,
       handleLoginClick,
-      accountRef
+      accountRef,
+      keepChange,
+      currentTab
     }
   }
 })

@@ -1,4 +1,5 @@
 import Request from './request'
+import localCache from '@/utils/cache'
 import { BASE_URL, TIME_OUT } from './request/config'
 
 const request = new Request({
@@ -6,14 +7,17 @@ const request = new Request({
   timeout: TIME_OUT,
   interceptors: {
     requestInterceptor: (config) => {
-      console.log('實例請求攔截')
+      const token = localCache.getCache('token')
+      if (token) {
+        config.headers.Authorization = token
+      }
+
       return config
     },
     requestInterceptorCatch: (err) => {
       return err
     },
     responseInterceptors: (res) => {
-      console.log('實例響應攔截')
       return res
     },
     responseInterceptorsCatch: (err) => {

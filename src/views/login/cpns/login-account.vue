@@ -1,11 +1,11 @@
 <template>
   <div class="login-account">
-    <el-form :model="acount" :rules="rules" label-width="60px" ref="formRef">
+    <el-form :model="account" :rules="rules" label-width="60px" ref="formRef">
       <el-form-item label="帳號" prop="name">
-        <el-input type="password" v-model="acount.name"></el-input>
+        <el-input v-model="account.name"></el-input>
       </el-form-item>
       <el-form-item label="密碼" prop="password">
-        <el-input v-model="acount.password"></el-input>
+        <el-input v-model="account.password" show-password></el-input>
       </el-form-item>
     </el-form>
   </div>
@@ -13,29 +13,36 @@
 
 <script lang="ts">
 import { defineComponent, reactive, ref } from 'vue'
+import { useStore } from 'vuex'
 import { ElForm } from 'element-plus'
 import { rules } from '../config/account-config'
+import localCache from '@/utils/cache'
 
 export default defineComponent({
   setup() {
-    const acount = reactive({
-      name: '',
-      password: '',
+    const store = useStore()
+    const account = reactive({
+      name: localCache.getCache('name') ?? '',
+      password: localCache.getCache('password') ?? '',
       email: ''
     })
 
     const formRef = ref<InstanceType<typeof ElForm>>()
 
-    const loginAction = () => {
+    const loginAction = (isKeepPassword: boolean) => {
       formRef.value?.validate((valid) => {
         if (valid) {
-          console.log('登陸成功')
+          if (isKeepPassword) {
+            localCache.setCache('name', account.name)
+            localCache.setCache('password', account.password)
+            store.dispatch('login/accountLoginAction', account)
+          }
         }
       })
     }
 
     return {
-      acount,
+      account,
       rules,
       loginAction,
       formRef

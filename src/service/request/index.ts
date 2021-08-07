@@ -69,15 +69,15 @@ class Request {
   }
 
   // 透過傳入泛型來定義 then之後回傳res的類型
-  reuest<T>(config: MyRequestConfig<T>): Promise<T> {
+  request<T>(config: MyRequestConfig<T>): Promise<T> {
     return new Promise((resolve, reject) => {
       if (config.interceptors?.requestInterceptor) {
         // 判斷如果有攔截器參數 調用內部的攔截器函數
         config = config.interceptors.requestInterceptor(config)
+      }
 
-        if (config.showLoading === false) {
-          this.showLoading = config.showLoading
-        }
+      if (config.showLoading === false) {
+        this.showLoading = config.showLoading
       }
 
       this.instance
@@ -100,19 +100,19 @@ class Request {
   }
 
   get<T>(config: MyRequestConfig<T>): Promise<T> {
-    return this.reuest<T>({ ...config, method: 'GET' })
+    return this.request<T>({ ...config, method: 'GET' })
   }
 
   post<T>(config: MyRequestConfig<T>): Promise<T> {
-    return this.reuest<T>({ ...config, method: 'POST' })
+    return this.request<T>({ ...config, method: 'POST' })
   }
 
   delete<T>(config: MyRequestConfig<T>): Promise<T> {
-    return this.reuest<T>({ ...config, method: 'DELETE' })
+    return this.request<T>({ ...config, method: 'DELETE' })
   }
 
   patch<T>(config: MyRequestConfig<T>): Promise<T> {
-    return this.reuest<T>({ ...config, method: 'PATCH' })
+    return this.request<T>({ ...config, method: 'PATCH' })
   }
 }
 
