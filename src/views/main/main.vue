@@ -2,11 +2,19 @@
   <div class="main">
     <el-container class="main-content">
       <el-aside :width="isCollapse ? '60px' : '210px'">
-        <nav-menu :collapse="isCollapse" />
+        <nav-menu
+          :collapse="isCollapse"
+          :userMenus="userMenus"
+          :defaultValue="defaultValue"
+        />
       </el-aside>
       <el-container class="page">
         <el-header class="page-header">
-          <nav-header :collapse="isCollapse" @foldChange="handleFoldChange" />
+          <nav-header
+            :breadcrumbs="breadcrumb"
+            :collapse="isCollapse"
+            @foldChange="handleFoldChange"
+          />
         </el-header>
         <el-main class="page-content">
           <div class="page-info">
@@ -19,9 +27,14 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent, ref, computed, watchEffect } from 'vue'
+import { useRoute } from 'vue-router'
 import NavMenu from '@/components/nav-menu'
 import NavHeader from '@/components/nav-header'
+import { useStore } from '@/store'
+
+import { pathMapToMenu } from '@/utils/map-meuns'
+import { IBreadcrumb } from '@/base-ui/breadcrumb/types'
 
 export default defineComponent({
   components: {
@@ -30,13 +43,38 @@ export default defineComponent({
   },
   setup() {
     const isCollapse = ref(false)
+
+    const route = useRoute()
+    const store = useStore()
+    const defaultValue = ref()
+    const breadcrumb = ref<IBreadcrumb[]>([])
+
+    const userMenus = computed(() => {
+      return store.state.login.userMenus
+    })
+
+    watchEffect(() => {
+      const currentPath = route.path
+      if (currentPath) {
+        const { menu, breadcrumbs } = pathMapToMenu(
+          userMenus.value,
+          currentPath
+        )
+        defaultValue.value = menu.id + ''
+        breadcrumb.value = breadcrumbs
+      }
+    })
+
     const handleFoldChange = (isFold: boolean) => {
       isCollapse.value = isFold
     }
 
     return {
       isCollapse,
-      handleFoldChange
+      handleFoldChange,
+      defaultValue,
+      userMenus,
+      breadcrumb
     }
   }
 })

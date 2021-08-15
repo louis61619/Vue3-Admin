@@ -6,7 +6,7 @@
       @click="handleFoldClick"
     ></i>
     <div class="content">
-      <div>麵包謝</div>
+      <Breadcrumb :breadcrumbs="breadcrumbs" />
       <div>
         <UserInfo />
       </div>
@@ -15,15 +15,18 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, ref } from 'vue'
+import { defineComponent } from 'vue'
+import Breadcrumb from '@/base-ui/breadcrumb'
 import UserInfo from './user-info.vue'
 
 export default defineComponent({
   components: {
-    UserInfo
+    UserInfo,
+    Breadcrumb
   },
   props: {
-    collapse: Boolean
+    collapse: Boolean,
+    breadcrumbs: Array
   },
   emits: ['foldChange'],
   setup(props, { emit }) {

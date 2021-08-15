@@ -6,20 +6,14 @@ import {
   requestUserMenuByRoleId
 } from '@/service/login/login'
 import { IAccount } from '@/service/login/type'
+import { ILoginState, MutaionTypes } from './type'
+import { IRootStore } from '../type'
 
 import { mapMenuRoutes } from '@/utils/map-meuns'
 
 import localCache from '@/utils/cache'
 
-import { ILoginState } from './type'
-import { IRootStore } from '../type'
 import router from '@/router'
-
-enum mutaionTypes {
-  CHANGE_TOKEN = 'CHANGE_TOKEN',
-  CHANGE_USER_INFO = 'CHANGE_USER_INFO',
-  CHANGE_USER_MENUS = 'CHANGE_USER_MENUS'
-}
 
 const loginModule: Module<ILoginState, IRootStore> = {
   namespaced: true,
@@ -31,13 +25,13 @@ const loginModule: Module<ILoginState, IRootStore> = {
     }
   },
   mutations: {
-    [mutaionTypes.CHANGE_TOKEN](state, payload) {
+    [MutaionTypes.CHANGE_TOKEN](state, payload) {
       state.token = payload
     },
-    [mutaionTypes.CHANGE_USER_INFO](state, payload) {
+    [MutaionTypes.CHANGE_USER_INFO](state, payload) {
       state.userInfo = payload
     },
-    [mutaionTypes.CHANGE_USER_MENUS](state, payload) {
+    [MutaionTypes.CHANGE_USER_MENUS](state, payload) {
       state.userMenus = payload
 
       // 對路由進行加載
@@ -45,34 +39,36 @@ const loginModule: Module<ILoginState, IRootStore> = {
       routes.forEach((route) => {
         router.addRoute('main', route)
       })
-
-      router.push(window.location.hash.replace('#', ''))
     }
   },
   actions: {
     async accountLoginAction({ commit }, payload: IAccount) {
       const loginResult = await accountLoginRequest(payload)
       const { id, token } = loginResult.data
-      commit(mutaionTypes.CHANGE_TOKEN, token)
+      commit(MutaionTypes.CHANGE_TOKEN, token)
       localCache.setCache('token', token)
 
       const userInfoResult = await requestUserInfoById(id)
       const userInfo = userInfoResult.data
-      commit(mutaionTypes.CHANGE_USER_INFO, userInfo)
+      commit(MutaionTypes.CHANGE_USER_INFO, userInfo)
       localCache.setCache('userInfo', userInfo)
 
       const userMenuResult = await requestUserMenuByRoleId(userInfo.role.id)
       const userMenus = userMenuResult.data
-      commit(mutaionTypes.CHANGE_USER_MENUS, userMenus)
+      commit(MutaionTypes.CHANGE_USER_MENUS, userMenus)
       localCache.setCache('userMenus', userMenus)
+
+      router.push('/main')
     },
-    loadLocalStore({ commit }, app) {
+    loadLocalStore({ commit }) {
       const userInfo = localCache.getCache('userInfo')
-      if (userInfo) commit(mutaionTypes.CHANGE_USER_INFO, userInfo)
+      if (userInfo) commit(MutaionTypes.CHANGE_USER_INFO, userInfo)
+
       const token = localCache.getCache('token')
-      if (token) commit(mutaionTypes.CHANGE_TOKEN, token)
+      if (token) commit(MutaionTypes.CHANGE_TOKEN, token)
+
       const userMenus = localCache.getCache('userMenus')
-      if (userMenus) commit(mutaionTypes.CHANGE_USER_MENUS, userMenus)
+      if (userMenus) commit(MutaionTypes.CHANGE_USER_MENUS, userMenus)
     }
   }
 }

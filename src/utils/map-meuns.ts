@@ -1,4 +1,7 @@
-import { RouteRecordRaw } from 'vue-router'
+import type { RouteRecordRaw } from 'vue-router'
+import type { IBreadcrumb } from '@/base-ui/breadcrumb/types'
+
+export let firstMenu: any = null
 
 export function mapMenuRoutes(userMenus: any[]): RouteRecordRaw[] {
   const routes: RouteRecordRaw[] = []
@@ -21,6 +24,9 @@ export function mapMenuRoutes(userMenus: any[]): RouteRecordRaw[] {
       if (menu.type === 2) {
         const route = allRoutes.find((route) => route.path === menu.url)
         if (route) routes.push(route)
+        if (!firstMenu) {
+          firstMenu = route
+        }
       } else {
         _recurseGetRoute(menu.children)
       }
@@ -30,4 +36,22 @@ export function mapMenuRoutes(userMenus: any[]): RouteRecordRaw[] {
   _recurseGetRoute(userMenus)
 
   return routes
+}
+
+export function pathMapToMenu(userMenus: any[], currentPath: string): any {
+  for (const menu of userMenus) {
+    if (menu.type === 1) {
+      const findMenu = pathMapToMenu(menu.children ?? [], currentPath)
+      // console.log(findMenu) 第一次找下去有可能是undefined所以要判斷是否為空
+      if (findMenu) {
+        const breadcrumbs: IBreadcrumb[] = [
+          { name: menu.name },
+          { name: findMenu.name }
+        ]
+        return { menu: findMenu, breadcrumbs }
+      }
+    } else if (menu.type === 2 && menu.url === currentPath) {
+      return menu
+    }
+  }
 }

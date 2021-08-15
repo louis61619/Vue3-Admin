@@ -10,6 +10,7 @@
       text-color="#b7bdc3"
       active-text-color="#0a60bd"
       :collapse="collapse"
+      :default-active="defaultValue"
     >
       <template v-for="item in userMenus" :key="item.id">
         <!-- 二級菜單 -->
@@ -50,19 +51,16 @@
 
 <script lang="ts">
 import { useRouter } from 'vue-router'
-import { defineComponent, computed } from 'vue'
-import { useStore } from '@/store'
+import { defineComponent } from 'vue'
 
 export default defineComponent({
   props: {
-    collapse: Boolean
+    collapse: Boolean,
+    defaultValue: String,
+    userMenus: Array
   },
   setup() {
-    const store = useStore()
     const router = useRouter()
-    const userMenus = computed(() => {
-      return store.state.login.userMenus
-    })
 
     const handleMenuItemClick = (item: any) => {
       if (item) {
@@ -71,7 +69,6 @@ export default defineComponent({
     }
 
     return {
-      userMenus,
       handleMenuItemClick
     }
   }

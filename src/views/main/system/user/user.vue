@@ -1,22 +1,29 @@
 <template>
   <div class="user">
-    <BaseForm v-bind="formConfig" />
+    <PageSearch :formConfig="formConfig" />
+    <PageContent :contentConfig="contentConfig" pageUrl="/users/list" />
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
-import BaseForm from '@/base-ui/form'
+
+import PageSearch from '@/components/page-search'
+import PageContent from '@/components/page-content'
+
 import { formConfig } from './config/search.config'
+import { contentConfig } from './config/content.config'
 
 export default defineComponent({
   name: 'user',
   components: {
-    BaseForm
+    PageSearch,
+    PageContent
   },
   setup() {
     return {
-      formConfig
+      formConfig,
+      contentConfig
     }
   }
 })

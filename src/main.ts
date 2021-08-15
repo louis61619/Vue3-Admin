@@ -15,10 +15,12 @@ import './assets/css/index.less'
 
 const app = createApp(App)
 
-app.use(router)
+// 在進行路由註冊時就會匹配當前url對應的path 所以一開始還沒加載路由就是not found
+
 app.use(store)
 // registerApp(app)
 app.use(globalRegister)
 setupStore(app)
+app.use(router)
 // app.use(ElementPlus)
 app.mount('#app')

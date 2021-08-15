@@ -1,6 +1,7 @@
 type IFormType = 'select' | 'password' | 'datepicker' | 'input'
 
 export interface IIFromItems {
+  field: string
   label: string
   rules?: any[]
   placeholder?: string

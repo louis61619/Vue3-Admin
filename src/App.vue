@@ -1,7 +1,9 @@
 <template>
   <!-- <img alt="Vue logo" src="./assets/logo.png" /> -->
   <div class="app">
-    <router-view></router-view>
+    <el-config-provider :locale="locale">
+      <router-view></router-view>
+    </el-config-provider>
   </div>
 </template>
 
@@ -16,8 +18,20 @@ import { defineComponent } from 'vue'
 
 // defineComponent 將定義物件內部可輸入的屬性
 
+import { ElConfigProvider } from 'element-plus'
+
+import zhTW from 'element-plus/lib/locale/lang/zh-tw'
+
 export default defineComponent({
-  name: 'App'
+  name: 'App',
+  components: {
+    ElConfigProvider
+  },
+  data() {
+    return {
+      locale: zhTW
+    }
+  }
   // components: {
   //   ElButton
   // }

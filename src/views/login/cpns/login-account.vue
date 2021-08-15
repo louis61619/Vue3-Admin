@@ -35,8 +35,11 @@ export default defineComponent({
           if (isKeepPassword) {
             localCache.setCache('name', account.name)
             localCache.setCache('password', account.password)
-            store.dispatch('login/accountLoginAction', account)
+          } else {
+            localCache.deleteCache('name')
+            localCache.deleteCache('password')
           }
+          store.dispatch('login/accountLoginAction', account)
         }
       })
     }

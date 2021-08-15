@@ -1,15 +1,12 @@
 <template>
   <div class="app-form">
+    <slot name="header"></slot>
     <el-form :label-width="labelWidth">
       <el-row>
         <template v-for="item in formItems" :key="item.label">
           <!-- input組件 -->
           <el-col :span="8" v-bind="colLayout">
-            <el-form-item
-              :label="item.label"
-              :rules="item.rules"
-              :style="itemStyle"
-            >
+            <el-form-item :label="item.label" :style="itemStyle">
               <template
                 v-if="
                   !item.type ||
@@ -20,8 +17,8 @@
                 <el-input
                   :placeholder="item.placeholder"
                   v-bind="item.otherOptions"
-                  :type="item.type === 'password' && 'password'"
                   :show-password="item.type === 'password'"
+                  v-model="formData[`${item.field}`]"
                 ></el-input>
               </template>
               <!-- select組件 -->
@@ -30,6 +27,7 @@
                   :placeholder="item.placeholder"
                   v-bind="item.otherOptions"
                   style="width: 100%"
+                  v-model="formData[`${item.field}`]"
                 >
                   <el-option
                     v-for="options in item.options"
@@ -45,6 +43,7 @@
                 <el-date-picker
                   style="width: 100%"
                   v-bind="item.otherOptions"
+                  v-model="formData[`${item.field}`]"
                 ></el-date-picker>
               </template>
             </el-form-item>
@@ -52,15 +51,22 @@
         </template>
       </el-row>
     </el-form>
+    <div class="footer">
+      <slot name="footer"></slot>
+    </div>
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, PropType } from 'vue'
+import { defineComponent, PropType, ref, watch } from 'vue'
 import { IIFromItems } from '../types'
 
 export default defineComponent({
   props: {
+    modelValue: {
+      type: Object,
+      required: true
+    },
     formItems: {
       type: Array as PropType<IIFromItems[]>,
       // vue3 default中如果是物件和陣列要使用箭頭函數
@@ -87,8 +93,23 @@ export default defineComponent({
       }
     }
   },
-  setup() {
-    return {}
+  emits: ['update:modelValue'],
+  setup(props, { emit }) {
+    const formData = ref({ ...props.modelValue })
+
+    watch(
+      formData,
+      (newValue) => {
+        emit('update:modelValue', newValue)
+      },
+      {
+        deep: true
+      }
+    )
+
+    return {
+      formData
+    }
   }
 })
 </script>
@@ -97,5 +118,10 @@ export default defineComponent({
 /* 如果在scoped中選擇子元素的根元素也是會生效的 */
 .app-form {
   padding-top: 22px;
+
+  .footer {
+    text-align: right;
+    padding: 0 45px 20px 0;
+  }
 }
 </style>
