@@ -100,6 +100,7 @@ export default defineComponent({
   .page-info {
     background-color: #fff;
     border-radius: 5px;
+    padding-top: 22px;
   }
 }
 

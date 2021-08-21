@@ -2,7 +2,8 @@ import { ILoginState } from './login/type'
 import { ISystemState } from './main/system/type'
 
 interface IRootStore {
-  name: string
+  roleList: any[]
+  departmentList: any[]
 }
 
 interface IRootWithModule {
@@ -12,4 +13,9 @@ interface IRootWithModule {
 
 type IStoreType = IRootStore & IRootWithModule
 
-export { IRootStore, IStoreType }
+enum MutaionTypes {
+  CHNAGE_DEPARTMENT_LIST = 'CHNAGE_DEPARTMENT_LIST',
+  CHANGE_ROLE_LIST = 'CHANGE_ROLE_LIST'
+}
+
+export { IRootStore, IStoreType, MutaionTypes }

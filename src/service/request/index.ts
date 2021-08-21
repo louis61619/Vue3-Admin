@@ -35,9 +35,9 @@ class Request {
     // 添加所有實例都有的攔截器 優先執行
     this.instance.interceptors.request.use(
       (config) => {
-        console.log('全局請求攔截')
+        // console.log('全局請求攔截')
 
-        console.log('是否加入loading', this.showLoading)
+        // console.log('是否加入loading', this.showLoading)
         if (this.showLoading) {
           this.loading = ElLoading.service({
             lock: true,
@@ -55,7 +55,7 @@ class Request {
     // 響應攔截 後執行
     this.instance.interceptors.response.use(
       (res) => {
-        console.log('全局響應攔截')
+        // console.log('全局響應攔截')
         setTimeout(() => {
           this.loading?.close()
         }, 1000)

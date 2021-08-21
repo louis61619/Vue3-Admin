@@ -9,7 +9,7 @@ import { IAccount } from '@/service/login/type'
 import { ILoginState, MutaionTypes } from './type'
 import { IRootStore } from '../type'
 
-import { mapMenuRoutes } from '@/utils/map-meuns'
+import { mapMenuRoutes, mapMenuToPermission } from '@/utils/map-meuns'
 
 import localCache from '@/utils/cache'
 
@@ -21,7 +21,8 @@ const loginModule: Module<ILoginState, IRootStore> = {
     return {
       token: '',
       userInfo: {},
-      userMenus: {}
+      userMenus: {},
+      permissions: []
     }
   },
   mutations: {
@@ -39,6 +40,10 @@ const loginModule: Module<ILoginState, IRootStore> = {
       routes.forEach((route) => {
         router.addRoute('main', route)
       })
+
+      // 獲取用戶按鈕權限
+      const permissions = mapMenuToPermission(payload)
+      state.permissions = permissions
     }
   },
   actions: {

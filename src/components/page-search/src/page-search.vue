@@ -4,10 +4,17 @@
       <h2>高級檢索</h2>
     </template>
     <template #footer>
-      <el-button icon="el-icon-search" @click="handleResetClick">
-        重置
-      </el-button>
-      <el-button type="primary" icon="el-icon-refresh">搜索</el-button>
+      <div class="footer">
+        <el-button icon="el-icon-search" @click="handleResetClick">
+          重置
+        </el-button>
+        <el-button
+          type="primary"
+          icon="el-icon-refresh"
+          @click="handleSearchClick"
+          >搜索
+        </el-button>
+      </div>
     </template>
   </BaseForm>
 </template>
@@ -21,27 +28,47 @@ export default defineComponent({
     BaseForm
   },
   props: {
-    formConfig: Object
+    formConfig: {
+      type: Object,
+      required: true
+    }
   },
-  setup(props) {
-    const configData: any = {}
+  emits: ['resetBtnClick', 'queryBtnClick'],
+  setup(props, { emit }) {
+    const originFormData: any = {}
     const formItems = props.formConfig?.formItems || []
     for (const item of formItems) {
-      configData[`${item.field}`] = ''
+      originFormData[`${item.field}`] = ''
     }
 
-    const formData = ref(configData)
+    const formData = ref(originFormData)
 
+    // 用戶點擊重置
     const handleResetClick = () => {
-      console.log('-----------')
+      // 1.直接修改內部指針
+      // for (const key in originFormData) {
+      //   formData.value[key] = originFormData[key]
+      // }
+      formData.value = originFormData
+      emit('resetBtnClick')
+    }
+
+    const handleSearchClick = () => {
+      emit('queryBtnClick', formData.value)
     }
 
     return {
       formData,
-      handleResetClick
+      handleResetClick,
+      handleSearchClick
     }
   }
 })
 </script>
 
-<style scoped></style>
+<style scoped>
+.footer {
+  text-align: right;
+  padding: 0 45px 20px 0;
+}
+</style>

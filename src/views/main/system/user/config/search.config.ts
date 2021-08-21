@@ -8,13 +8,12 @@ export const formConfig: IForm = {
     lg: 8,
     md: 12,
     sm: 24,
-    xm: 24
+    xs: 24
   },
   formItems: [
     {
       field: 'id',
       label: 'id',
-      type: 'input',
       placeholder: '請輸入id'
     },
     {
@@ -23,33 +22,33 @@ export const formConfig: IForm = {
       placeholder: '請輸入用戶名'
     },
     {
-      field: 'password',
-      label: '密碼',
-      type: 'password',
-      placeholder: '請輸入用戶名'
+      field: 'realname',
+      label: '真實姓名',
+      placeholder: '請輸入真實姓名'
     },
     {
-      field: 'sport',
-      label: '喜歡的運動',
-      placeholder: '請輸入用戶名',
+      field: 'cellphone',
+      label: '電話號碼',
+      placeholder: '請輸入電話號碼'
+    },
+    {
+      field: 'enable',
       type: 'select',
+      label: '用戶狀態',
+      placeholder: '請選擇用戶狀態',
       options: [
         {
-          label: '籃球',
-          value: 'basketball'
+          label: '啟用',
+          value: 1
         },
         {
-          label: '足球',
-          value: 'soccer'
-        },
-        {
-          label: '羽毛球',
-          value: 'tennis'
+          label: '禁用',
+          value: 0
         }
       ]
     },
     {
-      field: 'createTime',
+      field: 'createAt',
       type: 'datepicker',
       label: '創建時間',
       otherOptions: {

@@ -1,16 +1,51 @@
 <template>
-  <div class="menu">
-    <h2>menu</h2>
+  <div class="user">
+    <!-- <PageSearch
+      :formConfig="formConfig"
+      @queryBtnClick="handleQueryClick"
+      @resetBtnClick="handleQueryClick"
+    /> -->
+    <PageContent
+      ref="pageContentRef"
+      :contentConfig="contentConfig"
+      pageName="menu"
+    />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent, ref } from 'vue'
+
+import PageSearch from '@/components/page-search'
+import PageContent from '@/components/page-content'
+
+// import { formConfig } from './config/search.config'
+import { contentConfig } from './config/content.config'
 
 export default defineComponent({
-  name: 'appMenu',
+  name: 'role',
+  components: {
+    // PageSearch,
+    PageContent
+  },
   setup() {
-    return {}
+    const pageContentRef = ref<InstanceType<typeof PageContent>>()
+
+    const handleResetClick = () => {
+      pageContentRef.value?.getPageData()
+    }
+
+    const handleQueryClick = (queryInfo: any) => {
+      pageContentRef.value?.getPageData(queryInfo)
+    }
+
+    return {
+      // formConfig,
+      contentConfig,
+      handleResetClick,
+      handleQueryClick,
+      pageContentRef
+    }
   }
 })
 </script>
