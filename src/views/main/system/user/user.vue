@@ -14,15 +14,17 @@
     />
     <PageModal
       ref="pageModalRef"
+      pageName="users"
       :defaultInfo="defaultInfo"
       :modalConfig="modalConfigRef"
+      @afterCreateData="handleResetClick"
+      @afterdeleteData="handleResetClick"
     />
   </div>
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from 'vue'
-import { useStore } from '@/store'
+import { defineComponent, computed, ref } from 'vue'
 
 import PageSearch from '@/components/page-search'
 import PageContent from '@/components/page-content'
@@ -35,6 +37,8 @@ import { formConfig } from './config/search.config'
 import { contentConfig } from './config/content.config'
 import { modalConfig } from './config/modal.config'
 
+import { getPageListData } from '@/service/main/system/system'
+
 export default defineComponent({
   name: 'user',
   components: {
@@ -46,31 +50,15 @@ export default defineComponent({
     const { pageContentRef, handleResetClick, handleQueryClick } =
       usePageSearch()
 
-    const newCallback = () => {
-      const passwordItem = modalConfig.formItems.find(
-        (item) => item.field === 'password'
-      )
-      if (passwordItem) passwordItem.isHidden = false
-    }
-
-    const editCallback = () => {
-      const passwordItem = modalConfig.formItems.find(
-        (item) => item.field === 'password'
-      )
-      if (passwordItem) passwordItem.isHidden = true
-    }
-
-    const { pageModalRef, handleNewData, handleEditData, defaultInfo } =
-      usePageModal(newCallback, editCallback)
-
     // 動態添加部門角色列表
-    const store = useStore()
+    const departmentList = ref<any[]>([])
+    const roleList = ref<any[]>([])
     const modalConfigRef = computed(() => {
       const departmentItem = modalConfig.formItems.find((item) => {
         return item.field === 'departmentId'
       })
       if (departmentItem) {
-        departmentItem.options = store.state.departmentList.map((item) => {
+        departmentItem.options = departmentList.value.map((item) => {
           return { label: item.name, value: item.id }
         })
       }
@@ -78,13 +66,42 @@ export default defineComponent({
         return item.field === 'roleId'
       })
       if (roleItem) {
-        roleItem.options = store.state.roleList.map((item) => {
+        roleItem.options = roleList.value.map((item) => {
           return { label: item.name, value: item.id }
         })
       }
-
       return modalConfig
     })
+
+    // 編輯與新增按鈕點擊回調
+    const getInitData = async () => {
+      const departmentResult = await getPageListData('/department/list', {
+        offset: 0,
+        size: 1000
+      })
+      departmentList.value = departmentResult.data.list
+      const roleResult = await getPageListData('/role/list', {
+        offset: 0,
+        size: 1000
+      })
+      roleList.value = roleResult.data.list
+    }
+    const newCallback = () => {
+      const passwordItem = modalConfigRef.value.formItems.find(
+        (item) => item.field === 'password'
+      )
+      if (passwordItem) passwordItem.isHidden = false
+      getInitData()
+    }
+    const editCallback = () => {
+      const passwordItem = modalConfigRef.value.formItems.find(
+        (item) => item.field === 'password'
+      )
+      if (passwordItem) passwordItem.isHidden = true
+      getInitData()
+    }
+    const { pageModalRef, handleNewData, handleEditData, defaultInfo } =
+      usePageModal(newCallback, editCallback)
 
     return {
       formConfig,

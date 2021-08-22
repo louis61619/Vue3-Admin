@@ -35,7 +35,7 @@ export default defineComponent({
 
     const logout = () => {
       localCache.deleteCache('token')
-      router.go(0)
+      router.push('/')
     }
 
     return {

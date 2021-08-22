@@ -55,13 +55,15 @@ export default defineComponent({
 
     watchEffect(() => {
       const currentPath = route.path
-      if (currentPath) {
+      if (currentPath && userMenus.value) {
         const { menu, breadcrumbs } = pathMapToMenu(
           userMenus.value,
           currentPath
         )
-        defaultValue.value = menu.id + ''
-        breadcrumb.value = breadcrumbs
+        if (menu && breadcrumbs) {
+          defaultValue.value = menu.id + ''
+          breadcrumb.value = breadcrumbs
+        }
       }
     })
 
@@ -100,7 +102,7 @@ export default defineComponent({
   .page-info {
     background-color: #fff;
     border-radius: 5px;
-    padding-top: 22px;
+    // padding-top: 22px;
   }
 }
 

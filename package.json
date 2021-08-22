@@ -15,6 +15,7 @@
     "coderwhy": "^1.1.4",
     "core-js": "^3.6.5",
     "dayjs": "^1.10.6",
+    "echarts": "^5.1.2",
     "element-plus": "^1.0.2-beta.63",
     "normalize.css": "^8.0.1",
     "vue": "^3.0.0",

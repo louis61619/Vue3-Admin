@@ -1,5 +1,5 @@
 <template>
-  <BaseForm v-bind="formConfig" v-model="formData">
+  <BaseForm v-bind="formConfig" v-model="formData" class="page-search">
     <template #header>
       <h2>高級檢索</h2>
     </template>
@@ -66,9 +66,13 @@ export default defineComponent({
 })
 </script>
 
-<style scoped>
-.footer {
-  text-align: right;
-  padding: 0 45px 20px 0;
+<style lang="less" scoped>
+.page-search {
+  padding: 22px 0;
+  .footer {
+    text-align: right;
+    padding-right: 45px;
+    // padding: 0 45px 20px 0;
+  }
 }
 </style>

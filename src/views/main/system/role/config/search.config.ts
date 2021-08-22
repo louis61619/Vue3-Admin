@@ -3,12 +3,6 @@ import { IForm } from '@/base-ui/form'
 export const formConfig: IForm = {
   formItems: [
     {
-      field: 'id',
-      label: 'id',
-      type: 'input',
-      placeholder: '請輸入id'
-    },
-    {
       field: 'name',
       label: '角色名',
       placeholder: '請輸入角色名'

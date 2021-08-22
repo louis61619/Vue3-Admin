@@ -1,10 +1,11 @@
 <template>
   <div class="page-modal">
-    <el-dialog title="新建用戶" v-model="dialogVisible" center>
-      <BaseForm v-bind="modalConfig" v-model="formData"> </BaseForm>
+    <el-dialog title="新建用戶" v-model="dialogVisible" center destroy-on-close>
+      <BaseForm v-bind="modalConfig" v-model="formData" />
+      <slot></slot>
       <template #footer>
         <span class="dialog-footer">
-          <el-button type="primary">確定</el-button>
+          <el-button type="primary" @click="handleConfirmClick">確定</el-button>
           <el-button @click="dialogVisible = false">取消</el-button>
         </span>
       </template>
@@ -16,6 +17,8 @@
 import { defineComponent, ref, watch, PropType } from 'vue'
 import { IForm } from '@/base-ui/form/types'
 import BaseForm from '@/base-ui/form'
+
+import { createPageData, updatePageData } from '@/service/main/system/system'
 
 export default defineComponent({
   components: {
@@ -29,9 +32,18 @@ export default defineComponent({
     defaultInfo: {
       type: Object,
       default: () => ({})
+    },
+    pageName: {
+      type: String,
+      required: true
+    },
+    otherInfo: {
+      type: Object,
+      default: () => ({})
     }
   },
-  setup(props) {
+  emits: ['afterCreateData', 'afterdeleteData'],
+  setup(props, { emit }) {
     const dialogVisible = ref(false)
     const formData = ref<any>({})
 
@@ -44,9 +56,36 @@ export default defineComponent({
       }
     )
 
+    // 新增|編輯
+    const handleCreateData = async () => {
+      await createPageData(`/${props.pageName}`, {
+        ...formData.value,
+        ...props.otherInfo
+      })
+      emit('afterCreateData')
+    }
+
+    const handledeleteData = async () => {
+      await updatePageData(`/${props.pageName}/${props.defaultInfo.id}`, {
+        ...formData.value,
+        ...props.otherInfo
+      })
+      emit('afterdeleteData')
+    }
+
+    const handleConfirmClick = () => {
+      dialogVisible.value = false
+      if (Object.keys(props.defaultInfo).length) {
+        handledeleteData()
+      } else {
+        handleCreateData()
+      }
+    }
+
     return {
       dialogVisible,
-      formData
+      formData,
+      handleConfirmClick
     }
   }
 })
