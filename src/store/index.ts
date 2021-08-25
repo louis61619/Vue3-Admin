@@ -7,7 +7,9 @@ import system from './main/system/system'
 
 const store = createStore<IRootStore>({
   state: () => {
-    return {}
+    return {
+      title: 'vue3 admin'
+    }
   },
   mutations: {},
   actions: {},

@@ -1,7 +1,9 @@
 import { ILoginState } from './login/type'
 import { ISystemState } from './main/system/type'
 
-interface IRootStore {}
+interface IRootStore {
+  title: string
+}
 
 interface IRootWithModule {
   login: ILoginState
