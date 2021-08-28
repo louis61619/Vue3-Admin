@@ -1,4 +1,5 @@
 import request from '@/service'
+import { IData } from '@/service/types'
 
 enum DataApi {
   categoryGoodsCount = '/goods/category/count',
@@ -8,25 +9,25 @@ enum DataApi {
 }
 
 export function getCategoryGoodsCount() {
-  return request.get({
+  return request.get<IData>({
     url: DataApi.categoryGoodsCount
   })
 }
 
 export function getCategoryGoodsSale() {
-  return request.get({
+  return request.get<IData>({
     url: DataApi.categoryGoodsSale
   })
 }
 
 export function getCategoryGoodsFavor() {
-  return request.get({
+  return request.get<IData>({
     url: DataApi.categoryGoodsFavor
   })
 }
 
 export function getAddressGoodsSale() {
-  return request.get({
+  return request.get<IData>({
     url: DataApi.addressGoodsSale
   })
 }

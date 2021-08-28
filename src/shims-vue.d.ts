@@ -7,3 +7,5 @@ declare module '*.vue' {
 
 declare module '*.png'
 // declare const
+declare let $store: any
+declare module '*.json'

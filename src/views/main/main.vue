@@ -17,7 +17,7 @@
           />
         </el-header>
         <el-main class="page-content">
-          <div class="page-info">
+          <div class="page-info" ref="pageInfoRef">
             <router-view></router-view>
           </div>
         </el-main>
@@ -29,12 +29,15 @@
 <script lang="ts">
 import { defineComponent, ref, computed, watchEffect } from 'vue'
 import { useRoute } from 'vue-router'
-import NavMenu from '@/components/nav-menu'
-import NavHeader from '@/components/nav-header'
 import { useStore } from '@/store'
 
 import { pathMapToMenu } from '@/utils/map-meuns'
+import emmiter from '@/utils/event-bus'
+
 import { IBreadcrumb } from '@/base-ui/breadcrumb/types'
+
+import NavMenu from '@/components/nav-menu'
+import NavHeader from '@/components/nav-header'
 
 export default defineComponent({
   components: {
@@ -69,6 +72,16 @@ export default defineComponent({
 
     const handleFoldChange = (isFold: boolean) => {
       isCollapse.value = isFold
+
+      let timer: any
+      let count = 0
+      timer = setInterval(() => {
+        count++
+        emmiter.emit('handleFoldChange')
+        if (count > 7) {
+          clearInterval(timer)
+        }
+      }, 100)
     }
 
     return {

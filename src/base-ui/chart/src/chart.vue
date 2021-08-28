@@ -5,12 +5,14 @@
 </template>
 
 <script setup lang="ts">
-import { ref, onMounted, defineProps, withDefaults } from 'vue'
-import * as echarts from 'echarts'
+import { defineProps, withDefaults, watch, defineExpose } from 'vue'
+import useEcharts from '../hooks/use-echarts'
+import { EChartsOption } from 'echarts'
 
 // 定義props
 const props = withDefaults(
   defineProps<{
+    options: EChartsOption
     width?: string
     height?: string
   }>(),
@@ -20,38 +22,17 @@ const props = withDefaults(
   }
 )
 
-const echartRef = ref<HTMLElement>()
+const { echartRef, setOptions, updateSize } = useEcharts(props.options)
 
-onMounted(() => {
-  const echartInstance = echartRef.value && echarts.init(echartRef.value)
-
-  var option = {
-    title: {
-      text: 'ECharts 入门示例'
-    },
-    tooltip: {
-      trigger: 'axis',
-      axisPointer: {
-        type: 'cross'
-      }
-    },
-    legend: {
-      data: ['销量']
-    },
-    xAxis: {
-      data: ['衬衫', '羊毛衫', '雪纺衫', '裤子', '高跟鞋', '袜子']
-    },
-    yAxis: {},
-    series: [
-      {
-        name: '销量',
-        type: 'bar',
-        data: [5, 20, 36, 10, 10, 20]
-      }
-    ]
+watch(
+  () => props.options,
+  () => {
+    setOptions(props.options)
   }
+)
 
-  echartInstance?.setOption(option)
+defineExpose({
+  updateSize
 })
 </script>
 
