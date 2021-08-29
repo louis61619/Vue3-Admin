@@ -39,8 +39,7 @@ export default defineComponent({
     PageModal
   },
   setup() {
-    const { pageContentRef, handleResetClick, handleQueryClick } =
-      usePageSearch()
+    const { pageContentRef, handleResetClick, handleQueryClick } = usePageSearch()
 
     // modal配置信息
     // const store = useStore()
@@ -56,8 +55,7 @@ export default defineComponent({
     // })
     // const editCallback = () => {}
 
-    const { pageModalRef, handleNewData, handleEditData, defaultInfo } =
-      usePageModal()
+    const { pageModalRef, handleNewData, handleEditData, defaultInfo } = usePageModal()
 
     return {
       searchFormConfig,

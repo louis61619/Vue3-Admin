@@ -38,9 +38,7 @@ const responseFake = (url, type, respond) => {
     type: type || 'get',
     response(req, res) {
       console.log('request invoke:' + req.path)
-      res.json(
-        Mock.mock(respond instanceof Function ? respond(req, res) : respond)
-      )
+      res.json(Mock.mock(respond instanceof Function ? respond(req, res) : respond))
     }
   }
 }
@@ -78,11 +76,7 @@ module.exports = (app) => {
           mockRoutesLength = mockRoutes.mockRoutesLength
           mockStartIndex = mockRoutes.mockStartIndex
 
-          console.log(
-            chalk.magentaBright(
-              `\n > Mock Server hot reload success! changed  ${path}`
-            )
-          )
+          console.log(chalk.magentaBright(`\n > Mock Server hot reload success! changed  ${path}`))
         } catch (error) {
           console.log(chalk.redBright(error))
         }

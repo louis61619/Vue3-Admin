@@ -1,10 +1,7 @@
 import { ref } from 'vue'
 import PageModal from '@/components/page-modal'
 
-export default function usePageModal(
-  newCb?: () => void,
-  editCb?: (item?: any) => void
-) {
+export default function usePageModal(newCb?: () => void, editCb?: (item?: any) => void) {
   const pageModalRef = ref<InstanceType<typeof PageModal>>()
   const defaultInfo = ref({})
 

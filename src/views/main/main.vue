@@ -2,15 +2,11 @@
   <div class="main">
     <el-container class="main-content">
       <el-aside :width="isCollapse ? '60px' : '210px'">
-        <nav-menu
-          :collapse="isCollapse"
-          :userMenus="userMenus"
-          :defaultValue="defaultValue"
-        />
+        <NavMenu :collapse="isCollapse" :userMenus="userMenus" :defaultValue="defaultValue" />
       </el-aside>
       <el-container class="page">
         <el-header class="page-header">
-          <nav-header
+          <NavHeader
             :breadcrumbs="breadcrumb"
             :collapse="isCollapse"
             @foldChange="handleFoldChange"
@@ -60,10 +56,7 @@ export default defineComponent({
       const currentPath = route.path
       if (currentPath === '/login') return
       if (currentPath && userMenus.value) {
-        const { menu, breadcrumbs } = pathMapToMenu(
-          userMenus.value,
-          currentPath
-        )
+        const { menu, breadcrumbs } = pathMapToMenu(userMenus.value, currentPath)
         if (menu && breadcrumbs) {
           defaultValue.value = menu.id + ''
           breadcrumb.value = breadcrumbs

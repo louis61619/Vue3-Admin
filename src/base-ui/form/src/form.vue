@@ -12,13 +12,7 @@
               :rules="item.rules"
               :style="itemStyle"
             >
-              <template
-                v-if="
-                  !item.type ||
-                  item.type === 'input' ||
-                  item.type === 'password'
-                "
-              >
+              <template v-if="!item.type || item.type === 'input' || item.type === 'password'">
                 <el-input
                   :placeholder="item.placeholder"
                   v-bind="item.otherOptions"

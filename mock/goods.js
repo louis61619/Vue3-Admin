@@ -157,8 +157,7 @@ const list = [
     name: '2018秋裝套裝新款韓版百搭顯瘦長袖條紋雪紡襯衫女寬松直筒背帶褲套裝兩件套',
     oldPrice: '84',
     newPrice: '59',
-    enable:
-      '2018秋裝套裝新款韓版百搭顯瘦長袖條紋雪紡襯衫女寬松直筒背帶褲套裝兩件套',
+    enable: '2018秋裝套裝新款韓版百搭顯瘦長袖條紋雪紡襯衫女寬松直筒背帶褲套裝兩件套',
     status: 1,
     imgUrl:
       'http://s11.mogucdn.com/mlcdn/c45406/180312_5ebi8i8k389leic0g487h3l611kek_640x960.jpg_560x999.jpg',

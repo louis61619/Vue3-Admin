@@ -45,13 +45,7 @@ import {
 import { IDataType } from '@/components/page-charts/types/type'
 
 import BaseCard from '@/base-ui/card'
-import {
-  PieChart,
-  RoseChart,
-  LineChart,
-  BarChart,
-  MapChart
-} from '@/components/page-charts'
+import { PieChart, RoseChart, LineChart, BarChart, MapChart } from '@/components/page-charts'
 
 export default defineComponent({
   name: 'dashboard',
@@ -84,18 +78,12 @@ export default defineComponent({
 
     getCategoryGoodsSale().then((res) => {
       categoryGoodsSale.value.xLabels = res?.data?.map((item: any) => item.name)
-      categoryGoodsSale.value.yValues = res?.data?.map(
-        (item: any) => item.goodsCount
-      )
+      categoryGoodsSale.value.yValues = res?.data?.map((item: any) => item.goodsCount)
     })
 
     getCategoryGoodsFavor().then((res) => {
-      categoryGoodsFavor.value.xLabels = res?.data?.map(
-        (item: any) => item.name
-      )
-      categoryGoodsFavor.value.yValues = res?.data?.map(
-        (item: any) => item.goodsFavor
-      )
+      categoryGoodsFavor.value.xLabels = res?.data?.map((item: any) => item.name)
+      categoryGoodsFavor.value.yValues = res?.data?.map((item: any) => item.goodsFavor)
     })
 
     getAddressGoodsSale().then((res) => {

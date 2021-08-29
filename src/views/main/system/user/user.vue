@@ -47,8 +47,7 @@ export default defineComponent({
     PageModal
   },
   setup() {
-    const { pageContentRef, handleResetClick, handleQueryClick } =
-      usePageSearch()
+    const { pageContentRef, handleResetClick, handleQueryClick } = usePageSearch()
 
     // 動態添加部門角色列表
     const departmentList = ref<any[]>([])
@@ -96,21 +95,19 @@ export default defineComponent({
       roleList.value = roleResult.data.list
     }
     const newCallback = () => {
-      const passwordItem = modalConfigRef.value.formItems.find(
-        (item) => item.field === 'password'
-      )
+      const passwordItem = modalConfigRef.value.formItems.find((item) => item.field === 'password')
       if (passwordItem) passwordItem.isHidden = false
       getInitData()
     }
     const editCallback = () => {
-      const passwordItem = modalConfigRef.value.formItems.find(
-        (item) => item.field === 'password'
-      )
+      const passwordItem = modalConfigRef.value.formItems.find((item) => item.field === 'password')
       if (passwordItem) passwordItem.isHidden = true
       getInitData()
     }
-    const { pageModalRef, handleNewData, handleEditData, defaultInfo } =
-      usePageModal(newCallback, editCallback)
+    const { pageModalRef, handleNewData, handleEditData, defaultInfo } = usePageModal(
+      newCallback,
+      editCallback
+    )
 
     return {
       formConfig,

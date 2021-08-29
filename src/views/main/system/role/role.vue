@@ -63,8 +63,7 @@ export default defineComponent({
     PageModal
   },
   setup() {
-    const { pageContentRef, handleResetClick, handleQueryClick } =
-      usePageSearch()
+    const { pageContentRef, handleResetClick, handleQueryClick } = usePageSearch()
 
     const menuList = ref([])
     const otherInfo = ref({})
@@ -85,8 +84,10 @@ export default defineComponent({
       })
     }
 
-    const { pageModalRef, handleNewData, handleEditData, defaultInfo } =
-      usePageModal(getInitList, editcallback)
+    const { pageModalRef, handleNewData, handleEditData, defaultInfo } = usePageModal(
+      getInitList,
+      editcallback
+    )
 
     const handleCheckChange = (data: any, data2: any) => {
       const { checkedKeys, halfCheckedKeys } = data2

@@ -13,8 +13,8 @@
           <el-dropdown-item icon="el-icon-circle-close" @click="logout">
             退出登錄
           </el-dropdown-item>
-          <el-dropdown-item divided>用戶信息</el-dropdown-item>
-          <el-dropdown-item>系統管理</el-dropdown-item>
+          <!-- <el-dropdown-item divided>用戶信息</el-dropdown-item>
+          <el-dropdown-item>系統管理</el-dropdown-item> -->
         </el-dropdown-menu>
       </template>
     </el-dropdown>
@@ -47,13 +47,17 @@ export default defineComponent({
 </script>
 
 <style scoped lang="less">
-.el-dropdown-link {
-  cursor: pointer;
-  display: flex;
-  align-items: center;
+.user-info {
+  min-width: 150px;
 
-  & > span {
-    margin-left: 8px;
+  .el-dropdown-link {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+
+    & > span {
+      margin-left: 8px;
+    }
   }
 }
 </style>

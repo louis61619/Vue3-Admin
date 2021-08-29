@@ -5,13 +5,8 @@
     </template>
     <template #footer>
       <div class="footer">
-        <el-button icon="el-icon-search" @click="handleResetClick">
-          重置
-        </el-button>
-        <el-button
-          type="primary"
-          icon="el-icon-refresh"
-          @click="handleSearchClick"
+        <el-button icon="el-icon-search" @click="handleResetClick"> 重置 </el-button>
+        <el-button type="primary" icon="el-icon-refresh" @click="handleSearchClick"
           >搜索
         </el-button>
       </div>

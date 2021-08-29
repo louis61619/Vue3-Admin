@@ -6,7 +6,7 @@ const goodsCategoryCount = [
   },
   {
     id: 3,
-    name: '裤子',
+    name: '褲子',
     goodsCount: 20
   },
   {
@@ -16,7 +16,7 @@ const goodsCategoryCount = [
   },
   {
     id: 5,
-    name: '厨具',
+    name: '廚具',
     goodsCount: 19
   },
   {
@@ -31,7 +31,7 @@ const goodsCategoryCount = [
   },
   {
     id: 8,
-    name: '女装',
+    name: '女裝',
     goodsCount: 35
   }
 ]
@@ -44,7 +44,7 @@ const goodsCategorySale = [
   },
   {
     id: 3,
-    name: '裤子',
+    name: '褲子',
     goodsCount: 84813
   },
   {
@@ -54,7 +54,7 @@ const goodsCategorySale = [
   },
   {
     id: 5,
-    name: '厨具',
+    name: '廚具',
     goodsCount: 57479
   },
   {
@@ -69,7 +69,7 @@ const goodsCategorySale = [
   },
   {
     id: 8,
-    name: '女装',
+    name: '女裝',
     goodsCount: 112268
   }
 ]
@@ -82,7 +82,7 @@ const goodsCategoryFavor = [
   },
   {
     id: 3,
-    name: '裤子',
+    name: '褲子',
     goodsFavor: 5251
   },
   {
@@ -92,7 +92,7 @@ const goodsCategoryFavor = [
   },
   {
     id: 5,
-    name: '厨具',
+    name: '廚具',
     goodsFavor: 13974
   },
   {
@@ -107,7 +107,7 @@ const goodsCategoryFavor = [
   },
   {
     id: 8,
-    name: '女装',
+    name: '女裝',
     goodsFavor: 19911
   }
 ]

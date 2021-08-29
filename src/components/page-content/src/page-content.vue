@@ -1,30 +1,16 @@
 <template>
   <div class="content">
-    <BaseTable
-      v-bind="contentConfig"
-      :list="datalist"
-      :listCount="totalCount"
-      v-model:page="page"
-    >
+    <BaseTable v-bind="contentConfig" :list="datalist" :listCount="totalCount" v-model:page="page">
       <!-- header中的插槽 -->
       <template #headerHandler>
-        <el-button
-          type="primary"
-          v-if="isCreate"
-          size="medium"
-          @click="handleNewClick"
-        >
+        <el-button type="primary" v-if="isCreate" size="medium" @click="handleNewClick">
           新建數據
         </el-button>
       </template>
 
       <!-- 列表中的插槽 -->
       <template #status="scope">
-        <el-button
-          plain
-          size="mini"
-          :type="scope.row.enable ? 'success' : 'danger'"
-        >
+        <el-button plain size="mini" :type="scope.row.enable ? 'success' : 'danger'">
           {{ scope.row.enable ? '啟用' : '禁用' }}
         </el-button>
       </template>
@@ -58,11 +44,7 @@
       </template>
 
       <!-- 動態插入剩餘的插槽 -->
-      <template
-        v-for="item in otherSlotProps"
-        :key="item.prop"
-        #[item.slotName]="scope"
-      >
+      <template v-for="item in otherSlotProps" :key="item.prop" #[item.slotName]="scope">
         <slot :name="item.slotName" :row="scope.row"></slot>
       </template>
     </BaseTable>
@@ -135,15 +117,13 @@ export default defineComponent({
     })
 
     // 獲取動態插槽
-    const otherSlotProps = props.contentConfig?.propsList.filter(
-      (item: any) => {
-        if (item.slotName === 'status') return false
-        if (item.slotName === 'createAt') return false
-        if (item.slotName === 'updateAt') return false
-        if (item.slotName === 'handler') return false
-        if (item.slotName) return true
-      }
-    )
+    const otherSlotProps = props.contentConfig?.propsList.filter((item: any) => {
+      if (item.slotName === 'status') return false
+      if (item.slotName === 'createAt') return false
+      if (item.slotName === 'updateAt') return false
+      if (item.slotName === 'handler') return false
+      if (item.slotName) return true
+    })
 
     // 新建|編輯|刪除
     const handleNewClick = (item: any) => {

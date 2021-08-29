@@ -24,10 +24,7 @@
 
             <!-- 子菜單 -->
             <template v-for="subItem in item.children" :key="subItem.id">
-              <el-menu-item
-                :index="subItem.id + ''"
-                @click="handleMenuItemClick(subItem)"
-              >
+              <el-menu-item :index="subItem.id + ''" @click="handleMenuItemClick(subItem)">
                 <i v-if="subItem.icon" :class="subItem.icon"></i>
                 <span>{{ subItem.name }}</span>
               </el-menu-item>
@@ -36,10 +33,7 @@
         </template>
         <!-- 一級菜單 -->
         <template v-else-if="itme.type === 2">
-          <el-menu-item
-            :index="item.id + ''"
-            @click="handleMenuItemClick(itme)"
-          >
+          <el-menu-item :index="item.id + ''" @click="handleMenuItemClick(itme)">
             <i v-if="item.icon" :class="item.icon"></i>
             <span>{{ item.name }}</span>
           </el-menu-item>

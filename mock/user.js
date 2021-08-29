@@ -1,28 +1,28 @@
-const tokens = {
-  admin: {
-    token: 'admin-token'
-  },
-  editor: {
-    token: 'editor-token'
-  }
-}
+// const tokens = {
+//   admin: {
+//     token: 'admin-token'
+//   },
+//   editor: {
+//     token: 'editor-token'
+//   }
+// }
 
-const users = {
-  'admin-token': {
-    roles: ['admin'],
-    introduction: 'I am a super administrator',
-    avatar:
-      'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-    name: 'Super Admin'
-  },
-  'editor-token': {
-    roles: ['editor'],
-    introduction: 'I am an editor',
-    avatar:
-      'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
-    name: 'Normal Editor'
-  }
-}
+// const users = {
+//   'admin-token': {
+//     roles: ['admin'],
+//     introduction: 'I am a super administrator',
+//     avatar:
+//       'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+//     name: 'Super Admin'
+//   },
+//   'editor-token': {
+//     roles: ['editor'],
+//     introduction: 'I am an editor',
+//     avatar:
+//       'https://wpimg.wallstcn.com/f778738c-e4f8-4870-b634-56703b4acafe.gif',
+//     name: 'Normal Editor'
+//   }
+// }
 
 const list = [
   {
@@ -115,6 +115,53 @@ module.exports = [
         data: {
           list,
           totalCount: list.length
+        }
+      }
+    }
+  },
+  {
+    url: '/login',
+    type: 'post',
+    response: () => {
+      return {
+        code: 0,
+        data: {
+          id: 1,
+          name: 'admin',
+          token: 'admin-token'
+        }
+      }
+    }
+  },
+  {
+    url: '/users/1',
+    type: 'get',
+    response: () => {
+      return {
+        code: 0,
+        data: {
+          id: 1,
+          name: 'louis',
+          realname: 'louis',
+          cellphone: 18812345678,
+          enable: 1,
+          createAt: '2021-01-02T10:20:26.000Z',
+          updateAt: '2021-01-03T04:50:13.000Z',
+          role: {
+            id: 1,
+            name: '超級管理員',
+            intro: '所有權限',
+            createAt: '2021-01-02T10:01:52.000Z',
+            updateAt: '2021-01-02T10:01:52.000Z'
+          },
+          department: {
+            id: 1,
+            name: '管理部',
+            parentId: null,
+            createAt: '2021-01-02T10:03:09.000Z',
+            updateAt: '2021-01-05T08:25:46.000Z',
+            leader: 'louis'
+          }
         }
       }
     }

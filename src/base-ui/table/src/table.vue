@@ -22,13 +22,7 @@
         type="selection"
         align="center"
       ></el-table-column>
-      <el-table-column
-        v-if="showIndexColumn"
-        type="index"
-        label="序號"
-        align="center"
-        width="80"
-      >
+      <el-table-column v-if="showIndexColumn" type="index" label="序號" align="center" width="80">
         <template #default="scope">
           {{ scope.$index + page.pageSize * (page.currentPage - 1) + 1 }}
         </template>

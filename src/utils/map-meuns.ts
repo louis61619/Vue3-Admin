@@ -44,10 +44,7 @@ export function pathMapToMenu(userMenus: any[], currentPath: string): any {
       const findMenu = pathMapToMenu(menu.children ?? [], currentPath)
       // console.log(findMenu) 第一次找下去有可能是undefined所以要判斷是否為空
       if (findMenu) {
-        const breadcrumbs: IBreadcrumb[] = [
-          { name: menu.name },
-          { name: findMenu.name }
-        ]
+        const breadcrumbs: IBreadcrumb[] = [{ name: menu.name }, { name: findMenu.name }]
         return { menu: findMenu, breadcrumbs }
       }
     } else if (menu.type === 2 && menu.url === currentPath) {

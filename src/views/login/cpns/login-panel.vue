@@ -15,15 +15,11 @@
       </el-tab-pane>
     </el-tabs>
     <div class="account-control">
-      <el-checkbox v-model="isKeepPassword" @change="keepChange"
-        >記住密碼</el-checkbox
-      >
+      <el-checkbox v-model="isKeepPassword" @change="keepChange">記住密碼</el-checkbox>
       <el-link type="primary">忘記密碼</el-link>
     </div>
 
-    <el-button type="primary" class="login-btn" @click="handleLoginClick">
-      立即登錄
-    </el-button>
+    <el-button type="primary" class="login-btn" @click="handleLoginClick"> 立即登錄 </el-button>
   </div>
 </template>
 

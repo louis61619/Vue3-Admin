@@ -54,14 +54,15 @@ export default defineComponent({
     PageModal
   },
   setup() {
-    const { pageContentRef, handleResetClick, handleQueryClick } =
-      usePageSearch()
+    const { pageContentRef, handleResetClick, handleQueryClick } = usePageSearch()
 
     const editCallback = () => {
       return
     }
-    const { pageModalRef, handleNewData, handleEditData, defaultInfo } =
-      usePageModal(undefined, editCallback)
+    const { pageModalRef, handleNewData, handleEditData, defaultInfo } = usePageModal(
+      undefined,
+      editCallback
+    )
 
     return {
       searchFormConfig,
