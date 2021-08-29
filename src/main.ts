@@ -6,13 +6,14 @@ import store from '@/store'
 import { globalRegister } from '@/global'
 import { setupStore } from '@/store'
 
-import 'normalize.css'
+// import 'normalize.css'
+// import './assets/css/index.less'
 import './assets/css/index.less'
+import 'normalize.css'
 
 // 全局引入
 // import ElementPlus from 'element-plus'
 // import 'element-plus/lib/theme-chalk/index.css'
-import axios from 'axios'
 const { mockXHR } = require('../mock')
 mockXHR()
 
@@ -27,14 +28,3 @@ setupStore(app)
 app.use(router)
 // app.use(ElementPlus)
 app.mount('#app')
-
-// 模擬api
-// axios
-//   .post('/api/users/list', {
-//     username: 'admin'
-//   })
-//   .then((response) => {
-//     if (response.data) {
-//       console.log(response.data)
-//     }
-//   })

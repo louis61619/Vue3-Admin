@@ -7,114 +7,61 @@
       </div>
     </BaseCard>
     <BaseCard title="技術棧">
-      <!-- <hy-text-link :text-arrs="technologyStacks" />
-      <hy-descriptions
-        title="生产环境依赖"
-        :column="2"
-        :table-datas="dependencies"
-      />
-      <hy-descriptions
-        title="开发环境依赖"
-        :column="2"
-        :table-datas="devDependencies"
-      /> -->
+      <BaseTextLink :text-arrs="technologyStacks" />
     </BaseCard>
-    <!-- <hy-card title="项目结构">
-      <div class="c-left">
-        <hy-code language="bash" :code="projectDir" />
-      </div>
-    </hy-card> -->
-    <!-- <hy-card title="项目规范">
-      <hy-descriptions
-        title="文件命名规范"
+    <BaseCard title="項目規範">
+      <BaseDescriptions
+        title="文件命名規範"
         :column="1"
         :table-datas="[
-          { name: '文件夹', description: '统一小写, 多个单词使用-分割' },
+          { name: '文件夾', description: '小寫，多個單詞使用-分割，EX: nav-bar' },
           {
             name: '文件(.ts .vue .json .d.ts)',
-            description: '统一小写, 多个单词使用-分割'
+            description: '小寫，多個單詞使用-分割，EX: nav-header.vue'
           }
         ]"
       />
-      <hy-descriptions
-        title="编写组件规范"
+      <BaseDescriptions
+        title="組件編寫規範"
         :column="1"
         :table-datas="[
-          { name: '组件的文件', description: '统一小写, 多个单词使用-分割' },
+          { name: '組件結構', description: '放在src資料夾下，統一於index.ts中導出' },
           {
-            name: '组件的目录结构',
-            description:
-              '例如 button 组件：button/src/index.vue, 统一在button/index.ts导出'
+            name: '組件名稱',
+            description: '除了全局導入的組件，統一大寫駝峰，EX: NavHeader'
           },
           {
-            name: '组件导包顺序',
-            description:
-              '导vue技术栈的包 , 导第三方的工具函数 , 导本地的组件, 导本地的工具函数'
-          },
-          { name: '组件的名称', description: '统一大写开头，驼峰命名' },
-          {
-            name: '组件属性顺序',
-            description: 'name, components, props, emits, setup ...'
-          },
-          {
-            name: 'template标签',
-            description: '小写加 - ( 例如：<case-panel/> )'
-          },
-          {
-            name: 'template标签属性顺序',
-            description: 'v-if , v-for , ref, class, style, ... ,事件'
-          },
-          {
-            name: '组件的props',
-            description: '小写开头，驼峰命名，必须编写类型默认值'
-          },
-          {
-            name: '组件的样式',
-            description:
-              '作用域：scoped, lang = scss / less  ; 类名：统一小写, 多个单词使用-分割'
+            name: '組件樣式',
+            description: '小寫，多個單詞使用-分割，EX: nav-header'
           }
         ]"
       />
-    </hy-card>
-
-    <hy-card title="Git提交规范">
-      <hy-descriptions
-        :column="1"
-        :table-datas="[
-          { name: 'add 操作', description: 'git add ' },
-          { name: 'commit 操作', description: 'yarn commit ' },
-          { name: 'pull 操作', description: 'git pull ' },
-          { name: 'push 操作', description: 'git push ' }
-        ]"
-      />
-    </hy-card> -->
+    </BaseCard>
+    <BaseCard title="git提交規範">
+      <div class="c-left">統一使用npm run commit進行命令行交互式提交</div>
+    </BaseCard>
   </div>
 </template>
 
 <script lang="ts">
 import { defineComponent } from 'vue'
 
-// import HyDescriptions from '@/base-ui/descriptions'
-// import HyTextLink from '@/base-ui/text-link'
+import BaseDescriptions from '@/base-ui/descriptions'
+import BaseTextLink from '@/base-ui/text-link'
 // import HyCode from '@/base-ui/code'
 import BaseCard from '@/base-ui/card'
-
-import { technologyStacks, dependencies, devDependencies, projectDir } from './config'
+import { technologyStacks } from './config'
 
 export default defineComponent({
   components: {
-    // HyDescriptions,
-    BaseCard
-    // HyTextLink
-    // HyCode
+    BaseCard,
+    BaseTextLink,
+    BaseDescriptions
   },
 
   setup() {
     return {
-      technologyStacks,
-      dependencies,
-      devDependencies,
-      projectDir
+      technologyStacks
     }
   }
 })
@@ -128,17 +75,13 @@ export default defineComponent({
 
   .el-card {
     margin-bottom: 20px;
-    // ::v-deep 重写 element-plus 样式
     &:deep(.el-card__header span) {
-      // ::v-deep .el-card__header span {
       font-weight: 700;
     }
   }
 
   .description {
-    // ::v-deep 重写 element-plus 样式
     &:deep(.el-descriptions__title) {
-      // ::v-deep .el-descriptions__title {
       font-weight: 400;
     }
   }

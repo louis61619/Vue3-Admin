@@ -392,6 +392,29 @@ const list = [
         updateAt: '2021-08-19 15:52:14.000000'
       }
     ]
+  },
+  {
+    id: 41,
+    name: '隨便聊聊',
+    type: 1,
+    url: '/main/story',
+    icon: 'el-icon-chat-line-round',
+    sort: 4,
+    createAt: '2021-04-19T14:11:02.000Z',
+    updateAt: '2021-08-20T07:00:44.000Z',
+    children: [
+      {
+        id: 42,
+        url: '/main/story/chat',
+        name: '關於我',
+        sort: 108,
+        type: 2,
+        children: null,
+        createAt: '2021-01-02 18:09:11.000000',
+        parentId: 41,
+        updateAt: '2021-08-19 17:29:31.000000'
+      }
+    ]
   }
   // {
   //   id: 41,
