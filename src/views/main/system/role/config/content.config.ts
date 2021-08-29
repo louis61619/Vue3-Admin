@@ -1,6 +1,6 @@
 export const contentConfig = {
   showIndexColumn: true,
-  showSelectColum: true,
+  // showSelectColum: true,
   title: '部門列表',
   propsList: [
     {

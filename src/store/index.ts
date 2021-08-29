@@ -3,7 +3,7 @@ import { App } from 'vue'
 
 import { IRootStore, IStoreType } from './type'
 import login from './login/login'
-import system from './main/system/system'
+// import system from './main/system/system'
 
 const store = createStore<IRootStore>({
   state: () => {
@@ -14,8 +14,8 @@ const store = createStore<IRootStore>({
   mutations: {},
   actions: {},
   modules: {
-    login,
-    system
+    login
+    // system
   }
 })
 

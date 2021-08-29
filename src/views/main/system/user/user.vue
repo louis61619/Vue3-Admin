@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref } from 'vue'
+import { defineComponent, computed, ref, watch } from 'vue'
 
 import PageSearch from '@/components/page-search'
 import PageContent from '@/components/page-content'
@@ -37,7 +37,7 @@ import { formConfig } from './config/search.config'
 import { contentConfig } from './config/content.config'
 import { modalConfig } from './config/modal.config'
 
-import { getPageListData } from '@/service/main/system/system'
+import { getPageListData } from '@/service/main/main'
 
 export default defineComponent({
   name: 'user',
@@ -53,27 +53,36 @@ export default defineComponent({
     // 動態添加部門角色列表
     const departmentList = ref<any[]>([])
     const roleList = ref<any[]>([])
-    const modalConfigRef = computed(() => {
-      const departmentItem = modalConfig.formItems.find((item) => {
-        return item.field === 'departmentId'
-      })
-      if (departmentItem) {
-        departmentItem.options = departmentList.value.map((item) => {
-          return { label: item.name, value: item.id }
-        })
-      }
-      const roleItem = modalConfig.formItems.find((item) => {
-        return item.field === 'roleId'
-      })
-      if (roleItem) {
-        roleItem.options = roleList.value.map((item) => {
-          return { label: item.name, value: item.id }
-        })
-      }
-      return modalConfig
-    })
+    const modalConfigRef = ref(modalConfig)
 
-    // 編輯與新增按鈕點擊回調
+    watch(
+      () => departmentList.value,
+      () => {
+        const departmentItem = modalConfigRef.value.formItems.find((item) => {
+          return item.field === 'departmentId'
+        })
+        if (departmentItem) {
+          departmentItem.options = departmentList.value.map((item) => {
+            return { label: item.name, value: item.id }
+          })
+        }
+      }
+    )
+    watch(
+      () => roleList.value,
+      () => {
+        const roleItem = modalConfigRef.value.formItems.find((item) => {
+          return item.field === 'roleId'
+        })
+        if (roleItem) {
+          roleItem.options = roleList.value.map((item) => {
+            return { label: item.name, value: item.id }
+          })
+        }
+      }
+    )
+
+    // 編輯與新增按鈕點擊回調 編輯按鈕去除密碼欄位
     const getInitData = async () => {
       const departmentResult = await getPageListData('/department/list', {
         offset: 0,

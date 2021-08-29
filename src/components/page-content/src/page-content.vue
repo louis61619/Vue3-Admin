@@ -71,7 +71,7 @@
 
 <script lang="ts">
 import { defineComponent, ref, watchEffect } from 'vue'
-import { getPageListData, deletePageData } from '@/service/main/system/system'
+import { getPageListData, deletePageData } from '@/service/main/main'
 import { usePermission } from '@/hook/use-permission'
 
 import BaseTable from '@/base-ui/table'

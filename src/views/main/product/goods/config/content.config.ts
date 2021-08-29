@@ -1,34 +1,35 @@
 export const contentConfig = {
   showIndexColumn: true,
-  showSelectColum: true,
+  // showSelectColum: true,
   title: '商品列表',
   propsList: [
     {
       prop: 'name',
       label: '商品名稱',
-      minWidht: 80
+      minWidth: 140
     },
     {
       prop: 'oldPrice',
       label: '原價格',
-      minWidht: 80,
+      minWidth: 80,
       slotName: 'oldPrice'
     },
     {
       prop: 'newPrice',
       label: '現價格',
-      minWidht: 80
+      minWidth: 80,
+      slotName: 'newPrice'
     },
     {
       prop: 'imgUrl',
       label: '商品圖片',
-      minWidht: 100,
+      minWidth: 100,
       slotName: 'image'
     },
     {
-      prop: 'status',
+      prop: 'enable',
       label: '狀態',
-      minWidht: 100,
+      minWidth: 100,
       slotName: 'status'
     },
     {

@@ -11,11 +11,11 @@ export const formConfig: IForm = {
     xs: 24
   },
   formItems: [
-    {
-      field: 'id',
-      label: 'id',
-      placeholder: '請輸入id'
-    },
+    // {
+    //   field: 'id',
+    //   label: 'id',
+    //   placeholder: '請輸入id'
+    // },
     {
       field: 'name',
       label: '用戶名',

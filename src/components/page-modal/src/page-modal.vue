@@ -18,7 +18,7 @@ import { defineComponent, ref, watch, PropType } from 'vue'
 import { IForm } from '@/base-ui/form/types'
 import BaseForm from '@/base-ui/form'
 
-import { createPageData, updatePageData } from '@/service/main/system/system'
+import { createPageData, updatePageData } from '@/service/main/main'
 
 export default defineComponent({
   components: {

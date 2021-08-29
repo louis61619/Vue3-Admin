@@ -12,6 +12,9 @@ import './assets/css/index.less'
 // 全局引入
 // import ElementPlus from 'element-plus'
 // import 'element-plus/lib/theme-chalk/index.css'
+import axios from 'axios'
+const { mockXHR } = require('../mock')
+mockXHR()
 
 const app = createApp(App)
 
@@ -24,3 +27,14 @@ setupStore(app)
 app.use(router)
 // app.use(ElementPlus)
 app.mount('#app')
+
+// 模擬api
+// axios
+//   .post('/api/users/list', {
+//     username: 'admin'
+//   })
+//   .then((response) => {
+//     if (response.data) {
+//       console.log(response.data)
+//     }
+//   })

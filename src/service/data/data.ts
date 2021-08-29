@@ -10,24 +10,28 @@ enum DataApi {
 
 export function getCategoryGoodsCount() {
   return request.get<IData>({
-    url: DataApi.categoryGoodsCount
+    url: DataApi.categoryGoodsCount,
+    showLoading: false
   })
 }
 
 export function getCategoryGoodsSale() {
   return request.get<IData>({
-    url: DataApi.categoryGoodsSale
+    url: DataApi.categoryGoodsSale,
+    showLoading: false
   })
 }
 
 export function getCategoryGoodsFavor() {
   return request.get<IData>({
-    url: DataApi.categoryGoodsFavor
+    url: DataApi.categoryGoodsFavor,
+    showLoading: false
   })
 }
 
 export function getAddressGoodsSale() {
   return request.get<IData>({
-    url: DataApi.addressGoodsSale
+    url: DataApi.addressGoodsSale,
+    showLoading: false
   })
 }

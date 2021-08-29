@@ -53,7 +53,7 @@ import { formConfig } from './config/search.config'
 import { contentConfig } from './config/content.config'
 import { modalConfig } from './config/modal.config'
 
-import { getPageListData } from '@/service/main/system/system'
+import { getPageListData } from '@/service/main/main'
 
 export default defineComponent({
   name: 'role',
@@ -90,7 +90,6 @@ export default defineComponent({
 
     const handleCheckChange = (data: any, data2: any) => {
       const { checkedKeys, halfCheckedKeys } = data2
-      console.log(checkedKeys, halfCheckedKeys)
       const menuList = [...checkedKeys, ...halfCheckedKeys]
       otherInfo.value = { menuList }
     }

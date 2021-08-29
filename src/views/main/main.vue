@@ -58,6 +58,7 @@ export default defineComponent({
 
     watchEffect(() => {
       const currentPath = route.path
+      if (currentPath === '/login') return
       if (currentPath && userMenus.value) {
         const { menu, breadcrumbs } = pathMapToMenu(
           userMenus.value,
