@@ -35,9 +35,6 @@ export default defineComponent({
   // components: {
   //   ElButton
   // }
-  // setup(props) {
-
-  // }
 })
 </script>
 
