@@ -1,4 +1,4 @@
-type IFormType = 'select' | 'password' | 'datepicker' | 'input'
+type IFormType = 'select' | 'password' | 'datepicker' | 'input' | 'custom'
 
 export interface IIFormItems {
   field: string
@@ -11,6 +11,7 @@ export interface IIFormItems {
 
   // 其他的屬性
   otherOptions?: any
+  slotName?: string
 }
 
 export interface IForm {

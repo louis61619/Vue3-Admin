@@ -32,7 +32,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "澎湖县" },
+      "properties": { "name": "澎湖縣" },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -236,7 +236,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "南投县" },
+      "properties": { "name": "南投縣" },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [

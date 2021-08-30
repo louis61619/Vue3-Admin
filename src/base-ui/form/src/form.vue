@@ -50,7 +50,10 @@
                   @update:modelValue="handleValueChange($event, item.field)"
                 ></el-date-picker>
               </template>
-              <!-- image upload組件 -->
+              <!-- 自訂表單 -->
+              <template v-else-if="item.type === 'custom'">
+                <slot :name="item.slotName" :row="item"> </slot>
+              </template>
             </el-form-item>
           </el-col>
         </template>

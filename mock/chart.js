@@ -148,8 +148,8 @@ const goodsCategoryFavor = [
 ]
 
 const goodsAddressSale = [
-  { address: '上海', count: 62298 },
-  { address: '南京', count: 55683 },
+  { address: '新竹市', count: 62298 },
+  { address: '澎湖縣', count: 55683 },
   { address: '郑州', count: 53716 },
   { address: '广州', count: 6364 },
   { address: '西安', count: 64976 },

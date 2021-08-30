@@ -27,7 +27,26 @@
       :defaultInfo="defaultInfo"
       :modalConfig="modalConfig"
       pageName="department"
-    />
+    >
+      <template #image="scope">
+        <!-- <el-image class="image" :src="defaultInfo[scope.row.field]"></el-image> -->
+        <!-- <el-upload
+          action="#"
+          list-type="picture-card"
+          :file-list="[{ url: defaultInfo[scope.row.field] }]"
+        >
+          <i class="el-icon-plus"></i>
+        </el-upload> -->
+        <el-upload class="avatar-uploader" action="#" :show-file-list="false">
+          <img
+            v-if="defaultInfo[scope.row.field]"
+            :src="defaultInfo[scope.row.field]"
+            class="avatar"
+          />
+          <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+        </el-upload>
+      </template>
+    </PageModal>
   </div>
 </template>
 
@@ -79,7 +98,32 @@ export default defineComponent({
   }
 })
 </script>
-
+<style>
+.avatar-uploader .el-upload {
+  border: 1px dashed #d9d9d9;
+  border-radius: 6px;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+.avatar-uploader .el-upload:hover {
+  border-color: #409eff;
+}
+.avatar-uploader-icon {
+  font-size: 28px;
+  color: #8c939d;
+  width: 128px;
+  height: 128px;
+  line-height: 128px;
+  text-align: center;
+}
+.avatar {
+  width: 128px;
+  height: 128px;
+  display: block;
+  object-fit: cover;
+}
+</style>
 <style lang="less" scoped>
 .image {
   width: 50px;

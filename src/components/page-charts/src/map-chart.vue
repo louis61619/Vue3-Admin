@@ -25,10 +25,10 @@ const options = computed(() => {
   return {
     backgroundColor: '#fff',
     title: {
-      text: '全国销量统计',
+      text: '銷量統計',
       left: 'center',
       textStyle: {
-        color: '#fff'
+        color: '#000'
       }
     },
     tooltip: {
@@ -48,13 +48,17 @@ const options = computed(() => {
         color: ['rgb(70, 240, 252)', 'rgb(250, 220, 46)', 'rgb(245, 38, 186)']
       },
       textStyle: {
-        color: '#fff'
+        color: '#000'
       }
     },
     // 地理編碼
     geo: {
-      map: 'china',
-      roam: 'scale',
+      // map: 'china',
+      map: 'taiwan',
+      // roam: 'scale',
+      // right: 100,
+      zoom: 1.2,
+      center: [120.5151, 23.69295],
       emphasis: {
         areaColor: '#f4cccc',
         borderColor: 'rgb(9, 54, 95)',
@@ -63,13 +67,20 @@ const options = computed(() => {
         }
       }
     },
+    // grid: {
+    //   left: '50%',
+    //   // right: '4%',
+    //   // bottom: '3%',
+    //   containLabel: true
+    // },
     series: [
       {
-        name: '销量',
+        name: '銷量',
         type: 'scatter',
         coordinateSystem: 'geo',
         data: convertData(props.mapData),
-        symbolSize: 12,
+        // symbolSize: 15,
+        zoom: 2,
         emphasis: {
           itemStyle: {
             borderColor: '#fff',
@@ -79,7 +90,7 @@ const options = computed(() => {
       },
       {
         type: 'map',
-        map: 'china',
+        map: 'taiwan',
         geoIndex: 0,
         aspectScale: 0.75,
         tooltip: {

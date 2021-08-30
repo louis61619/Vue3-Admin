@@ -1,7 +1,11 @@
 <template>
   <div class="page-modal">
     <el-dialog title="新建用戶" v-model="dialogVisible" center destroy-on-close>
-      <BaseForm v-bind="modalConfig" v-model="formData" />
+      <BaseForm v-bind="modalConfig" v-model="formData">
+        <template v-for="item in otherSlotProps" :key="item.prop" #[item.slotName]="scope">
+          <slot :name="item.slotName" :row="scope.row"></slot>
+        </template>
+      </BaseForm>
       <slot></slot>
       <template #footer>
         <span class="dialog-footer">
@@ -82,10 +86,15 @@ export default defineComponent({
       }
     }
 
+    const otherSlotProps = props.modalConfig.formItems.filter((item: any) => {
+      if (item.slotName) return true
+    })
+
     return {
       dialogVisible,
       formData,
-      handleConfirmClick
+      handleConfirmClick,
+      otherSlotProps
     }
   }
 })

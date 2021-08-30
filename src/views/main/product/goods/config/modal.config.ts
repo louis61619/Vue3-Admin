@@ -22,6 +22,8 @@ export const modalConfig: IForm = {
     {
       field: 'imgUrl',
       label: '圖片地址',
+      type: 'custom',
+      slotName: 'image',
       placeholder: '請輸入圖片地址'
     },
     {
