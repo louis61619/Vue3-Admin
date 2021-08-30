@@ -12,8 +12,8 @@
             @foldChange="handleFoldChange"
           />
         </el-header>
-        <el-main class="page-content">
-          <div class="page-info" ref="pageInfoRef">
+        <el-main class="page-content" ref="mainRef">
+          <div class="page-info">
             <router-view></router-view>
           </div>
         </el-main>
@@ -29,6 +29,7 @@ import { useStore } from '@/store'
 
 import { pathMapToMenu } from '@/utils/map-meuns'
 import emmiter from '@/utils/event-bus'
+import { ElMain } from 'element-plus'
 
 import { IBreadcrumb } from '@/base-ui/breadcrumb/types'
 
@@ -47,6 +48,7 @@ export default defineComponent({
     const store = useStore()
     const defaultValue = ref()
     const breadcrumb = ref<IBreadcrumb[]>([])
+    const mainRef = ref<InstanceType<typeof ElMain>>()
 
     const userMenus = computed(() => {
       return store.state.login.userMenus
@@ -56,6 +58,9 @@ export default defineComponent({
       const currentPath = route.path
       if (currentPath === '/login') return
       if (currentPath && userMenus.value) {
+        if (mainRef.value) {
+          mainRef.value.$el.scrollTop = 0
+        }
         const { menu, breadcrumbs } = pathMapToMenu(userMenus.value, currentPath)
         if (menu && breadcrumbs) {
           defaultValue.value = menu.id + ''
@@ -83,7 +88,8 @@ export default defineComponent({
       handleFoldChange,
       defaultValue,
       userMenus,
-      breadcrumb
+      breadcrumb,
+      mainRef
     }
   }
 })

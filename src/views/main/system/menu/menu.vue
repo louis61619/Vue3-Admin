@@ -5,7 +5,12 @@
       @queryBtnClick="handleQueryClick"
       @resetBtnClick="handleQueryClick"
     /> -->
-    <PageContent ref="pageContentRef" :contentConfig="contentConfig" pageName="menu" />
+    <PageContent
+      ref="pageContentRef"
+      :contentConfig="contentConfig"
+      pageName="menu"
+      :showCreateButton="false"
+    />
   </div>
 </template>
 

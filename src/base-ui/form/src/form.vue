@@ -50,6 +50,7 @@
                   @update:modelValue="handleValueChange($event, item.field)"
                 ></el-date-picker>
               </template>
+              <!-- image upload組件 -->
             </el-form-item>
           </el-col>
         </template>

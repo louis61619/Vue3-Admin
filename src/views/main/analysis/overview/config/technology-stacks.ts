@@ -16,7 +16,7 @@ export const technologyStacks = [
     desp: 'Echart5.x'
   },
   {
-    title: '富文本',
+    title: '文本編輯器',
     desp: 'WangEditor'
   },
   {

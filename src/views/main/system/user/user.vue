@@ -24,7 +24,7 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed, ref, watch } from 'vue'
+import { defineComponent, ref, watch } from 'vue'
 
 import PageSearch from '@/components/page-search'
 import PageContent from '@/components/page-content'

@@ -18,7 +18,6 @@ export function mapMenuRoutes(userMenus: any[]): RouteRecordRaw[] {
   // 2. 對所有的route進行篩選
   // type === 1 取出children
   // type === 2 對應url
-
   const _recurseGetRoute = (menus: any[]) => {
     for (const menu of menus) {
       if (menu.type === 2) {
@@ -28,7 +27,7 @@ export function mapMenuRoutes(userMenus: any[]): RouteRecordRaw[] {
           firstMenu = route
         }
       } else {
-        _recurseGetRoute(menu.children)
+        menu.children && _recurseGetRoute(menu.children)
       }
     }
   }

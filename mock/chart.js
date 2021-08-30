@@ -1,3 +1,38 @@
+const goodsAmountList = [
+  {
+    amount: 'sale',
+    title: '商品銷售總量',
+    tips: '所有商品銷售總量',
+    subtitle: '商品銷售總量',
+    number1: 511685,
+    number2: 511685
+  },
+  {
+    amount: 'favor',
+    title: '商品總收藏',
+    tips: '所有商品總收藏',
+    subtitle: '商品總收藏',
+    number1: 88437,
+    number2: 88437
+  },
+  {
+    amount: 'inventory',
+    title: '商品總庫存',
+    tips: '所有商品總庫存',
+    subtitle: '商品总库存',
+    number1: 885577,
+    number2: 885577
+  },
+  {
+    amount: 'saleroom',
+    title: '商品總銷售額',
+    tips: '所有商品總銷售額',
+    subtitle: '商品總銷售額',
+    number1: 43145980,
+    number2: 43145980
+  }
+]
+
 const goodsCategoryCount = [
   {
     id: 2,
@@ -135,6 +170,16 @@ const goodsAddressSale = [
 ]
 
 module.exports = [
+  {
+    url: '/goods/amount/list',
+    type: 'get',
+    response: () => {
+      return {
+        code: 0,
+        data: goodsAmountList
+      }
+    }
+  },
   {
     url: '/goods/category/count',
     type: 'get',

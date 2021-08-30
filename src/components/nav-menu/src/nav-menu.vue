@@ -32,8 +32,8 @@
           </el-submenu>
         </template>
         <!-- 一級菜單 -->
-        <template v-else-if="itme.type === 2">
-          <el-menu-item :index="item.id + ''" @click="handleMenuItemClick(itme)">
+        <template v-if="item.type === 2">
+          <el-menu-item :index="item.id + ''" @click="handleMenuItemClick(item)">
             <i v-if="item.icon" :class="item.icon"></i>
             <span>{{ item.name }}</span>
           </el-menu-item>

@@ -22,8 +22,8 @@ export default defineComponent({
   setup() {
     const store = useStore()
     const account = reactive({
-      name: localCache.getCache('name') ?? '',
-      password: localCache.getCache('password') ?? '',
+      name: localCache.getCache('name') ?? 'admin',
+      password: localCache.getCache('password') ?? '123456',
       email: ''
     })
 

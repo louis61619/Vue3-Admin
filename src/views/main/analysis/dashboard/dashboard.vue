@@ -1,5 +1,13 @@
 <template>
   <div class="dashboard">
+    <el-row :gutter="10">
+      <template v-for="item in topPanelData" :key="item.title">
+        <el-col :md="12" :lg="6" :xl="6">
+          <StatisticalPanel :panelData="item" />
+        </el-col>
+      </template>
+    </el-row>
+
     <el-row :gutter="10" class="row">
       <el-col :span="7">
         <BaseCard title="分類商品數量(餅圖)">
@@ -37,6 +45,7 @@
 import { defineComponent, ref } from 'vue'
 
 import {
+  getAmountList,
   getCategoryGoodsCount,
   getCategoryGoodsSale,
   getCategoryGoodsFavor,
@@ -46,6 +55,7 @@ import { IDataType } from '@/components/page-charts/types/type'
 
 import BaseCard from '@/base-ui/card'
 import { PieChart, RoseChart, LineChart, BarChart, MapChart } from '@/components/page-charts'
+import StatisticalPanel from '@/components/statistical-panel'
 
 export default defineComponent({
   name: 'dashboard',
@@ -55,9 +65,11 @@ export default defineComponent({
     RoseChart,
     LineChart,
     BarChart,
-    MapChart
+    MapChart,
+    StatisticalPanel
   },
   setup() {
+    const topPanelData = ref<any>()
     const categoryGoodsCount = ref<IDataType[]>([])
     const categoryGoodsSale = ref<{ xLabels: string[]; yValues: any[] }>({
       xLabels: [],
@@ -68,6 +80,10 @@ export default defineComponent({
       yValues: []
     })
     const addressGoodsSale = ref<IDataType[]>([])
+
+    getAmountList().then((res) => {
+      topPanelData.value = res.data
+    })
 
     getCategoryGoodsCount().then((res) => {
       categoryGoodsCount.value = res?.data?.map((item: any) => ({
@@ -97,13 +113,17 @@ export default defineComponent({
       categoryGoodsCount,
       categoryGoodsSale,
       categoryGoodsFavor,
-      addressGoodsSale
+      addressGoodsSale,
+      topPanelData
     }
   }
 })
 </script>
 
 <style scoped>
+.dashboard {
+  background-color: #f0f2f5;
+}
 .row {
   margin-bottom: 20px;
 }

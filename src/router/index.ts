@@ -27,6 +27,12 @@ const routes: RouteRecordRaw[] = [
 
 const router = createRouter({
   routes,
+  // scrollBehavior: () => {
+  //   return {
+  //     el: '#main',
+  //     top: 0
+  //   }
+  // },
   history: createWebHashHistory()
 })
 

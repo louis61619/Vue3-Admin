@@ -1,5 +1,6 @@
 const { list: menu } = require('./routes.js')
 
+// 路由菜單
 const list = [
   {
     id: 4,
@@ -325,8 +326,8 @@ const list = [
                 name: '创建菜单',
                 sort: null,
                 type: 3,
-                parentId: 4,
-                permission: 'system:menu:create'
+                parentId: 4
+                // permission: 'system:menu:create'
               },
               {
                 id: 22,

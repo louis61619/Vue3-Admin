@@ -2,10 +2,18 @@ import request from '@/service'
 import { IData } from '@/service/types'
 
 enum DataApi {
+  amountList = '/goods/amount/list',
   categoryGoodsCount = '/goods/category/count',
   categoryGoodsSale = '/goods/category/sale',
   categoryGoodsFavor = '/goods/category/favor',
   addressGoodsSale = '/goods/address/sale'
+}
+
+export function getAmountList() {
+  return request.get<IData>({
+    url: DataApi.amountList,
+    showLoading: false
+  })
 }
 
 export function getCategoryGoodsCount() {

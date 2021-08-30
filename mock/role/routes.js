@@ -170,8 +170,8 @@ const list = [
             type: 3,
             createAt: '2021-01-03 13:41:01.000000',
             parentId: 4,
-            updateAt: '2021-04-19 21:59:39.000000',
-            permission: 'system:menu:create'
+            updateAt: '2021-04-19 21:59:39.000000'
+            // permission: 'system:menu:create'
           },
           {
             id: 22,
@@ -181,8 +181,8 @@ const list = [
             type: 3,
             createAt: '2021-01-03 13:41:01.000000',
             parentId: 4,
-            updateAt: '2021-04-19 22:05:18.000000',
-            permission: 'system:menu:delete'
+            updateAt: '2021-04-19 22:05:18.000000'
+            // permission: 'system:menu:delete'
           },
           {
             id: 23,
@@ -192,8 +192,8 @@ const list = [
             type: 3,
             createAt: '2021-01-03 13:41:01.000000',
             parentId: 4,
-            updateAt: '2021-04-19 22:05:21.000000',
-            permission: 'system:menu:update'
+            updateAt: '2021-04-19 22:05:21.000000'
+            // permission: 'system:menu:update'
           },
           {
             id: 24,
@@ -396,25 +396,25 @@ const list = [
   {
     id: 41,
     name: '隨便聊聊',
-    type: 1,
-    url: '/main/story',
+    type: 2,
+    url: '/main/story/chat',
     icon: 'el-icon-chat-line-round',
     sort: 4,
     createAt: '2021-04-19T14:11:02.000Z',
-    updateAt: '2021-08-20T07:00:44.000Z',
-    children: [
-      {
-        id: 42,
-        url: '/main/story/chat',
-        name: '關於我',
-        sort: 108,
-        type: 2,
-        children: null,
-        createAt: '2021-01-02 18:09:11.000000',
-        parentId: 41,
-        updateAt: '2021-08-19 17:29:31.000000'
-      }
-    ]
+    updateAt: '2021-08-20T07:00:44.000Z'
+    // children: [
+    //   {
+    //     id: 42,
+    //     url: '/main/story/chat',
+    //     name: '關於我',
+    //     sort: 108,
+    //     type: 2,
+    //     children: null,
+    //     createAt: '2021-01-02 18:09:11.000000',
+    //     parentId: 41,
+    //     updateAt: '2021-08-19 17:29:31.000000'
+    //   }
+    // ]
   }
   // {
   //   id: 41,

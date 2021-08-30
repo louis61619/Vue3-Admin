@@ -72,6 +72,10 @@ export default defineComponent({
     pageName: {
       type: String,
       required: true
+    },
+    showCreateButton: {
+      type: Boolean,
+      default: true
     }
   },
   emits: ['newBtnClick', 'editBtnClick'],

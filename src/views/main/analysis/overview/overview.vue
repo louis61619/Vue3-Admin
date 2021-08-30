@@ -3,13 +3,18 @@
     <BaseCard title="簡介">
       <div class="c-left">
         本項目是基於Vue3、Vuex、VueRouter、Vite、 ElementPlus
-        、TypeScript、Echart等技術的後台解決方案
+        、TypeScript、Echart等技術的後台解決方案，項目中所有數據都是使用Mock.js進行模擬
       </div>
     </BaseCard>
     <BaseCard title="技術棧">
       <BaseTextLink :text-arrs="technologyStacks" />
     </BaseCard>
     <BaseCard title="項目規範">
+      <BaseDescriptions
+        title="全局變量"
+        :column="1"
+        :table-datas="[{ name: 'VUE_APP_API', description: '後端API的baseURL' }]"
+      />
       <BaseDescriptions
         title="文件命名規範"
         :column="1"
@@ -69,6 +74,7 @@ export default defineComponent({
 
 <style scoped lang="less">
 .overview {
+  background-color: #f0f2f5;
   .c-left {
     text-align: left;
   }
