@@ -4,5 +4,5 @@ export function usePermission(pageName: string, handleName: string) {
   const store = useStore()
   const permissions = store.state.login.permissions
   const verifyPermission = `system:${pageName}:${handleName}`
-  return !!permissions.find((permission) => permission === verifyPermission)
+  return !!permissions.find((permission: any) => permission === verifyPermission)
 }

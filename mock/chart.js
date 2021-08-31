@@ -19,7 +19,7 @@ const goodsAmountList = [
     amount: 'inventory',
     title: '商品總庫存',
     tips: '所有商品總庫存',
-    subtitle: '商品总库存',
+    subtitle: '商品總庫存',
     number1: 885577,
     number2: 885577
   },

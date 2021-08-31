@@ -31,9 +31,7 @@ export function mapMenuRoutes(userMenus: any[]): RouteRecordRaw[] {
       }
     }
   }
-
   _recurseGetRoute(userMenus)
-
   return routes
 }
 
