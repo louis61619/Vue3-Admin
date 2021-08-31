@@ -30,5 +30,9 @@ export const technologyStacks = [
   {
     title: '提交規範',
     desp: 'Commitizen + Commitlint'
+  },
+  {
+    title: '組件模板建構',
+    desp: 'plop'
   }
 ]

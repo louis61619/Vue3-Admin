@@ -3,12 +3,6 @@ const { notEmpty } = require('../utils.js')
 module.exports = {
   description: 'generate a view',
   prompts: [
-    // {
-    //   type: 'input',
-    //   name: 'name',
-    //   message: 'view name please',
-    //   validate: notEmpty('name')
-    // },
     {
       type: 'input',
       name: 'path',
@@ -67,7 +61,7 @@ module.exports = {
       {
         type: 'add',
         path: `src/router/${path}/${name}.ts`,
-        templateFile: 'plop-templates/view/index.hbs',
+        templateFile: 'plop-templates/route/index.hbs',
         data: {
           name: name,
           path: path,

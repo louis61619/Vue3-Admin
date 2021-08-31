@@ -1,14 +1,3 @@
-{{#if route}}
-const dashboard = () => import('@/views/{{ properCase path }}/{{ properCase name }}.vue')
-export default {
-  path: '/main/analysis/dashboard',
-  name: 'dashboard',
-  component: dashboard,
-  children: []
-}
-
-{{/if}}
-
 {{#if template}}
 <template>
   <div></div>
@@ -28,7 +17,4 @@ export default defineComponent({
 </script>
 {{/if}}
 
-{{#if style}}
-<style scoped></style>
-
-{{/if}}
+{{#if style}}<style scoped></style>{{/if}}

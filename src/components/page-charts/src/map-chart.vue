@@ -55,8 +55,7 @@ const options = computed(() => {
     geo: {
       // map: 'china',
       map: 'taiwan',
-      // roam: 'scale',
-      // right: 100,
+      roam: true,
       zoom: 1.2,
       center: [120.5151, 23.69295],
       emphasis: {
@@ -67,12 +66,6 @@ const options = computed(() => {
         }
       }
     },
-    // grid: {
-    //   left: '50%',
-    //   // right: '4%',
-    //   // bottom: '3%',
-    //   containLabel: true
-    // },
     series: [
       {
         name: '銷量',

@@ -560,7 +560,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "台东县" },
+      "properties": { "name": "台東縣" },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -743,7 +743,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "嘉义县" },
+      "properties": { "name": "嘉義縣" },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -882,7 +882,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "屏东县" },
+      "properties": { "name": "屏東縣" },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -979,7 +979,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "彰化县" },
+      "properties": { "name": "彰化縣" },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -1175,7 +1175,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "新竹县" },
+      "properties": { "name": "新竹縣" },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -1246,7 +1246,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "桃园县" },
+      "properties": { "name": "桃園縣" },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -1323,7 +1323,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "花莲县" },
+      "properties": { "name": "花蓮市" },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -1437,7 +1437,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "苗栗县" },
+      "properties": { "name": "苗栗縣" },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -1502,7 +1502,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "云林县" },
+      "properties": { "name": "雲林縣" },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
@@ -1778,7 +1778,7 @@
     },
     {
       "type": "Feature",
-      "properties": { "name": "宜兰县" },
+      "properties": { "name": "宜蘭縣" },
       "geometry": {
         "type": "MultiPolygon",
         "coordinates": [
