@@ -9,7 +9,8 @@
     "prettier": "prettier --write .",
     "prepare": "husky install",
     "commit": "cz",
-    "new": "plop"
+    "new": "plop",
+    "deploy": "./deploy.sh"
   },
   "dependencies": {
     "axios": "^0.21.1",
