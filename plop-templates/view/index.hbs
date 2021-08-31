@@ -1,26 +1,34 @@
+{{#if route}}
+const dashboard = () => import('@/views/{{ properCase path }}/{{ properCase name }}.vue')
+export default {
+  path: '/main/analysis/dashboard',
+  name: 'dashboard',
+  component: dashboard,
+  children: []
+}
+
+{{/if}}
+
 {{#if template}}
 <template>
-  <div />
+  <div></div>
 </template>
 {{/if}}
 
 {{#if script}}
-<script>
-export default {
+<script lang="ts">
+import { defineComponent } from 'vue'
+
+export default defineComponent({
   name: '{{ properCase name }}',
-  props: {},
-  data() {
+  setup() {
     return {}
-  },
-  created() {},
-  mounted() {},
-  methods: {}
-}
+  }
+})
 </script>
 {{/if}}
 
 {{#if style}}
-<style lang="scss" scoped>
+<style scoped></style>
 
-</style>
 {{/if}}
