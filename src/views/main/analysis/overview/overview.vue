@@ -2,8 +2,7 @@
   <div class="overview">
     <BaseCard title="簡介">
       <div class="c-left">
-        本項目是基於Vue3、Vuex、VueRouter、Vite、 ElementPlus
-        、TypeScript、Echart等技術的後台解決方案，項目中所有數據都是使用Mock.js進行模擬
+        本項目是基於Vue3、Vuex、VueRouter、ElementPlus、TypeScript、Echart等技術的後台解決方案，項目中所有數據都是使用Mock.js進行模擬
       </div>
     </BaseCard>
     <BaseCard title="技術棧">
