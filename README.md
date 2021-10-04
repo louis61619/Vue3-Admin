@@ -2,9 +2,9 @@
 
 本項目是一個基於Vue3、Vuex、 ElementPlus 、TypeScript的後台管理系統的通用模板，如果覺得還不錯，請不要吝嗇你的star~
 
-[項目地址](https://github.com/louis61619/Vue3-Admin)
+[項目地址](https://github.com/louis61619/vue3-admin)
 
-[項目預覽](https://louis61619.github.io/Vue3-Admin)
+[項目預覽](https://louis61619.github.io/vue3-admin)
 
 
 
